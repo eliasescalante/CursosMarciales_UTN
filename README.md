@@ -1,2 +1,2 @@
-# CursosMarciales_UTN
+# Cursos Marciales - Tien Long Hu
 Trabajo nivel intermedio diplomatura django - "Aplicaciones"
