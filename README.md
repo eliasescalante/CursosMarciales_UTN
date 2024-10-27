@@ -33,7 +33,7 @@ CursosMarciales/
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
-├── productos/
+├── cursos/
 │   ├── migrations/
 │   ├── __init__.py
 │   ├── admin.py
