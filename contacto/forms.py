@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from contacto.models import Consulta
 from django import forms
 from captcha.fields import CaptchaField
+from datetime import datetime
 
 class ConsultaForm(ModelForm):
 
@@ -15,7 +16,6 @@ class ConsultaForm(ModelForm):
             "descripcion",
             "mail",
             "telefono",
-
         ]
 
     def send_email(self):
@@ -23,9 +23,11 @@ class ConsultaForm(ModelForm):
         nombre = self.cleaned_data["nombre"]
         descripcion = self.cleaned_data["descripcion"]
         mail = self.cleaned_data["mail"]
-        estado_respuesta = self.cleaned_data["estado_respuesta"]
         telefono = self.cleaned_data["telefono"]
-        fecha = self.cleaned_data["fecha"]
 
+        #valores por defaul
+        fecha = datetime.now().date()
+        estado_respuesta = "No contestada"
+        
         print("enviando datos")
         print(nombre, descripcion, mail, estado_respuesta, telefono, fecha)
