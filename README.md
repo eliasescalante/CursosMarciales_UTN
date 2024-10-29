@@ -28,6 +28,7 @@ Este es un proyecto desarrollado como parte del trabajo de nivel intermedio de l
 CursosMarciales/
 │
 ├── manage.py
+├── media/
 ├── CursosMarciales/
 │   ├── __init__.py
 │   ├── settings.py
@@ -41,6 +42,7 @@ CursosMarciales/
 │   ├── models.py
 │   └── views.py
 └── templates/
-    ├── base.html
-    ├── curso_list.html
-    └── curso_detail.html
+    |__ admin/
+    ├── cursos/
+    ├── usuarios/
+    └── contacto/

@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # App de la aplicación
     "usuarios",
-    "cursos"
+    "cursos",
+    "contacto",
+    # App de terceros
+    "captcha"
 ]
 
 MIDDLEWARE = [
