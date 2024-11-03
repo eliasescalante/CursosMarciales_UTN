@@ -22,6 +22,10 @@ Este es un proyecto desarrollado como parte del trabajo de nivel intermedio de l
 - **Bootstrap**: Framework CSS utilizado para el diseño responsivo.
 - **Admin de Django**: Interfaz de administración incorporada para gestionar usuarios y cursos.
 
+CAPTURAS DEL PROYECTO:
+
+<img src="https://github.com/eliasescalante/CursosMarciales_UTN/blob/master/media/captura.png" width="600" />
+
 ## Estructura del Proyecto
 
 ```plaintext
@@ -46,7 +50,3 @@ CursosMarciales/
     ├── cursos/
     ├── usuarios/
     └── contacto/
-
-CAPTURAS DEL PROYECTO:
-
-<img src="https://github.com/eliasescalante/CursosMarciales_UTN/blob/master/media/captura.png" width="600" />
