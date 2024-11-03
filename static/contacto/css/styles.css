@@ -1,0 +1,88 @@
+/* Fondo de la página en negro */
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-family: 'Anton' , sans-serif;
+    color: #BADA55;
+    font-size: 5rem;
+}
+
+p {
+    font-family: 'Anton' , sans-serif;
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Contenedor principal */
+.container-fluid {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Tarjeta del formulario*/
+.contacto_form {
+    background-color: #292C3E; /* Fondo oscuro */
+    padding: 30px 40px 30px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+/* Título del formulario en verde amarillento */
+.h1juan {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #DAFF00; /* Verde amarillento tirando a amarillo */
+    font-family: 'Anton', sans-serif;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Etiquetas de los campos en verde amarillento */
+label {
+    font-size: 1.1rem;
+    color: #DAFF00; /* Verde amarillento */
+    font-family: 'Anton', sans-serif;
+}
+
+/* Campos de entrada del formulario */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%; /* Ocupa todo el ancho de la tarjeta */
+    padding: 12px;
+    margin: 10px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+/* Estilos del botón en azul */
+.btn {
+    background-color: #DAFF00;
+    color: black;
+    border: none; /* Sin bordes */
+    border-radius: 20px;
+    font-size: 2rem;
+    padding: 20px 20px;
+    margin-top: 20px; /* Agrega espacio superior */
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #BADA55; /* Color más oscuro para el efecto hover */
+}
+
+/* Alineación de los botones */
+.row.justify-content-between {
+    display: flex;
+    justify-content: center;
+}

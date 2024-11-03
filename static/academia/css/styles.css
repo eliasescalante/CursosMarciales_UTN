@@ -34,7 +34,7 @@ p {
 }
 
 .unity h1 {
-    color: #A8E12D;
+    color: #DAFF00;
     font-size: 3.5rem;
     margin-bottom: 10px;
 }
@@ -47,7 +47,7 @@ p {
 .btn-join {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #A8E12D;
+    background-color: #DAFF00;
     color: #000;
     border: none;
     border-radius: 5px;
@@ -95,7 +95,7 @@ p {
 .info h2 {
     position: relative;
     z-index: 2;
-    color: #A8E12D;
+    color: #DAFF00;
     font-size: 4rem;
     margin: 10px 0;
 }
@@ -122,7 +122,7 @@ p {
 }
 
 .courses-title {
-    color: #A8E12D;
+    color: #DAFF00;
     font-size: 4rem;
     text-align: center;
     margin-bottom: 10px;
@@ -209,7 +209,7 @@ p {
     flex: 1 1 300px;
     max-width: 300px;
     padding: 20px;
-    background: linear-gradient(to bottom right, #A8E12D, #FFD700);
+    background: #DAFF00;
     color: #fff;
     border-radius: 8px;
     text-align: center;
@@ -224,7 +224,7 @@ p {
 }
 
 .testimonials h2 {
-    color: #A8E12D;
+    color: #DAFF00;
     font-size: 4rem;
     margin-bottom: 20px;
 }
@@ -242,7 +242,7 @@ p {
 }
 /*ESTILOS PARA MI FOOTER*/
 footer {
-    background: linear-gradient(to bottom right, #A8E12D, #FFD700);
+    background: #DAFF00;
     display: flex;
     justify-content: flex-start;
     align-items: center;
