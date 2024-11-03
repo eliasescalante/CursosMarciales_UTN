@@ -46,3 +46,7 @@ CursosMarciales/
     ├── cursos/
     ├── usuarios/
     └── contacto/
+
+CAPTURAS DEL PROYECTO:
+
+<img src="" width="600" />

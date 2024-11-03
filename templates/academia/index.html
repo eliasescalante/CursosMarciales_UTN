@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tien Long Hu - Artes Marciales Chinas</title>
+    <link rel="stylesheet" href="{% static 'academia/css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Nueva sección Unity -->
+    <section class="unity">
+        <h1>TIEN LONG HU | SHEN XIN LING - ARTES MARCIALES CHINAS</h1>
+        <h2>ÚNETE HOY</h2>
+        <button class="btn-join">CONVIERTETE EN TU MEJOR VERSION</button>
+    </section>
+
+    <section class="info section-full">
+        <h2>SOBRE NUESTRA ACADEMIA</h2>
+        <p>La Escuela Superior de Artes Chinas Tien Long Hu, fundada en 1991 por el Maestro Rubén Braun</p>
+        <p>, preserva las enseñanzas tradicionales de artes marciales chinas.</p>
+        <p> Su programa combina formas clásicas y modernas de Wu Shu</p>
+        <p>, integrando técnicas de maestros internacionales para una formación completa y auténtica.</p>
+    </section>
+
+    <div class="courses">
+        <div class="courses-title">QUE OFRECEMOS</div>
+        <div class="courses-description">Nos comprometemos a brindarte con la mejor experiencia de entrenamiento.</div>
+        <div class="courses-container">
+            <div class="course-item course-item-1">
+                <h3>Nuestros Cursos</h3>
+            </div>
+            <div class="course-item course-item-2">
+                <h3>Clases en nuestra Academia</h3>
+            </div>
+            <div class="course-item course-item-3">
+                <h3>Entrenamientos personales</h3>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+    <section class="testimonials section-full">
+        <h2>Antes y Después</h2>
+        <div class="testimonial-container">
+            <article class="testimonial testimonial1">
+                <img src="{{MEDIA_URL}}academia/persona_1.jpg" alt="Dolores Blanca" class="testimonial-image">
+                <p>"El curso de Tai Chi Chuan Forma 24 me ha transformado por completo..."</p>
+                <br>
+                <p>Dolores Blanca, 31</p>
+            </article>
+            <article class="testimonial testimonial2">
+                <img src="{{ MEDIA_URL }}academia/persona_2.jpg" alt="Lauren Cross" class="testimonial-image">
+                <p>"Las clases de Wu Shu en la academia son increíbles..."</p>
+                <br>
+                <p>Lauren Cross, 28</p>
+            </article>
+            <article class="testimonial testimonial3">
+                <img src="{{ MEDIA_URL }}academia/persona_3.jpg" alt="Tomás Cano" class="testimonial-image">
+                <p>"Las clases personalizadas de Wu Shu han sido una experiencia única..."</p>
+                <br>
+                <p>Tomás Cano, 44</p>
+            </article>
+        </div>
+    </section>
+    
+    
+
+    <footer>
+        <address>
+            <p>ARG | BS.AS. | QUILMES - Av.12 de Octubre 1000 CP - 1878</p>
+            <p>Proyecto - Diplomatura Django - Elias Escalante</p>
+            <p>Teléfono: 923 456 789</p>
+        </address>
+    </footer>
+</body>
+</html>

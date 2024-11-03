@@ -1,0 +1,295 @@
+/* Colores y fondo */
+html, body {
+    font-family: Arial, sans-serif;
+    color: #fff; /* Texto blanco */
+    margin: 0; /* Elimina márgenes por defecto */
+    padding: 0; /* Elimina padding por defecto */
+    width: 100%; /* Asegura que ocupen todo el ancho */
+    height: 100%; /* Asegura que ocupen todo el alto */
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    background-color: #000; /* Fondo negro */
+    font-size: 1.2rem; /* Tamaño de fuente general más grande */
+}
+
+h1, h2, h3, h4, h5, h6, .courses-title, .info h2 {
+    font-family: 'Anton', sans-serif; /* Aplicar fuente Anton */
+}
+
+p {
+    font-size: 2rem; /* Tamaño de fuente general */
+}
+
+.unity {
+    background-image: url('../../../media/academia/fondo_2.webp'); /* Imagen de fondo de Unity */
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+}
+
+
+.unity h1 {
+    color: #A8E12D; /* Verde con amarillo */
+    font-size: 3.5rem; /* Aumentar tamaño de fuente del h1 */
+    margin-bottom: 10px;
+}
+
+.unity h2 {
+    color: white;
+    font-size: 2.5rem; /* Aumentar tamaño de fuente del h2 */
+}
+
+.btn-join {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #A8E12D;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    max-width: 500px; /* Asegura que no sea más ancho que 200px */
+    width: auto; /* Cambiar a auto para el ancho del botón */
+    display: inline-block; /* Asegura que el botón no ocupe todo el ancho */
+    text-align: center; /* Centra el texto dentro del botón */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Agregar sombra para dar un efecto de elevación */
+}
+
+
+.btn-join:hover {
+    background-color: yellow; /* Color más claro al pasar el ratón */
+}
+
+.info {
+    position: relative; /* Necesario para el pseudo-elemento */
+    background-image: url('../../../media/academia/examen_1.jpg'); /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+    color: #fff; /* Esto afecta el color de los h2, pero lo cambiarás para los p más adelante */
+    border-radius: 8px;
+    min-height: 100vh; /* Se asegura de que la sección ocupe al menos toda la altura de la ventana */
+    display: flex; /* Activa Flexbox */
+    flex-direction: column; /* Organiza los hijos en columnas */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    text-align: center; /* Asegura que el texto esté centrado */
+}
+
+.info::before {
+    content: ""; /* Necesario para que el pseudo-elemento funcione */
+    position: absolute; /* Posiciona el pseudo-elemento en la parte superior */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Color negro con opacidad del 50% */
+    z-index: 1; /* Asegúrate de que esté por detrás del contenido */
+}
+
+.info h2 {
+    position: relative; /* Necesario para que el texto esté por encima del pseudo-elemento */
+    z-index: 2; /* Asegura que el texto esté en el frente */
+    color: #A8E12D; /* Verde con amarillo */
+    font-size: 4rem; /* Aumentar tamaño de fuente del h2 en info */
+    margin: 10px 0; /* Espaciado alrededor del h2 */
+}
+
+/* Asegúrate de que el texto dentro de p sea blanco */
+.info p {
+    position: relative; /* Necesario para que el texto esté por encima del pseudo-elemento */
+    z-index: 2; /* Asegura que el texto esté en el frente */
+    color: #fff; /* Color blanco para el texto del párrafo */
+    font-size: 2rem; /* Puedes ajustar el tamaño de la fuente según sea necesario */
+    margin: 10px 0; /* Espaciado alrededor del párrafo */
+    font-family: 'Anton', sans-serif; /* Aplicar fuente Anton */
+}
+
+
+
+/* Sección de cursos */
+.courses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+    background-color: #222;
+    border-radius: 8px;
+    min-height: 100vh;
+}
+
+.courses-title {
+    color: #A8E12D; /* Verde con amarillo */
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.courses-description {
+    color: #fff;
+    font-size: 2rem; /* Aumentar el tamaño de fuente de la descripción */
+    text-align: center;
+    margin-bottom: 30px;
+    max-width: 800px;
+}
+
+/* Contenedor de elementos de curso */
+.courses-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 40px; /* Espacio entre las tarjetas */
+    padding: 20px;
+}
+
+/* Estilos para cada tarjeta de curso */
+.course-item {
+    flex: 1 1 300px; /* Permite que cada tarjeta tenga un ancho mínimo de 300px */
+    height: 600px; /* Aumentar la altura de la tarjeta */
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustar el tamaño del título dentro de cada tarjeta */
+.course-item h3 {
+    font-size: 2.5rem; /* Aumentar el tamaño del texto del título */
+    color: #fff;
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+/* Imágenes de fondo para cada course-item */
+.course-item-1 {
+    background-image: url('../../../media/academia/titulo_1.jpg');
+}
+
+.course-item-2 {
+    background-image: url('../../../media/academia/clase_1.jpg');
+}
+
+.course-item-3 {
+    background-image: url('../../../media/academia/home-fitness.jpg');
+}
+
+/* Sección de testimonios */
+.testimonials {
+    display: flex;
+    flex-direction: column; /* Cambiar a columna para colocar el título encima */
+    align-items: center; /* Centra el contenido */
+    text-align: center;
+    padding: 40px 20px; /* Espaciado en la sección */
+    background-color: #222; /* Color de fondo para toda la sección */
+    width: 100%; /* Asegura que ocupe el 100% del ancho */
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: space-around; /* Espacio uniforme entre las tarjetas */
+    flex-wrap: wrap; /* Permite que las tarjetas se muevan a la siguiente línea si no hay suficiente espacio */
+    gap: 20px; /* Espacio entre las tarjetas */
+    max-width: 1200px; /* Limita el ancho máximo de la sección */
+    width: 100%; /* Asegura que ocupe el 100% del contenedor */
+    margin: 0 auto; /* Centra el contenedor dentro de la sección */
+}
+
+
+.testimonial {
+    flex: 1 1 300px; /* Permite que las tarjetas tengan un ancho mínimo de 300px */
+    max-width: 300px; /* Limita el ancho máximo de cada tarjeta */
+    padding: 20px;
+    background: linear-gradient(to bottom right, #A8E12D, #FFD700); /* Fondo verde a amarillo */
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+}
+
+
+.testimonial p {
+    margin: 0; /* Elimina el margen en los párrafos */
+}
+
+.testimonials h2 {
+    color: #A8E12D; /* Color del título */
+    font-size: 4rem; /* Tamaño de fuente para el título */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+
+.testimonial-author {
+    margin-top: 10px; /* Espacio entre el testimonio y el nombre/edad */
+    font-weight: bold; /* Hace el texto del autor más destacado */
+}
+
+.testimonial-image {
+    width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 8px; /* Bordes redondeados para una apariencia más suave */
+    margin-bottom: 15px; /* Espacio entre la imagen y el texto */
+}
+
+
+footer {
+    background: linear-gradient(to bottom right, #A8E12D, #FFD700);
+    display: flex;
+    justify-content: flex-start; /* Alinea todos los elementos a la izquierda */
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Mover la fuente aquí para aplicarla a todo el footer */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Agregar sombra sutil en la parte superior */
+}
+
+footer p {
+    color: black;
+    margin: 0 15px; /* Espaciado lateral entre párrafos */
+    transition: color 0.3s; /* Transición suave al cambiar el color */
+    font-size: 1rem;
+}
+
+footer p:hover {
+    color: #FFD700; /* Cambiar el color al pasar el mouse */
+}
+
+footer a {
+    color: white; /* Color para enlaces */
+    text-decoration: none; /* Sin subrayado */
+    margin: 0 15px; /* Espaciado lateral para enlaces */
+    transition: color 0.3s; /* Transición suave al cambiar el color */
+}
+
+footer a:hover {
+    color: #FFD700; /* Cambiar el color de los enlaces al pasar el mouse */
+}
+
+
