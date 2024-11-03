@@ -49,4 +49,4 @@ CursosMarciales/
 
 CAPTURAS DEL PROYECTO:
 
-<img src="" width="600" />
+<img src="https://github.com/eliasescalante/CursosMarciales_UTN/blob/master/media/captura.png" width="600" />
