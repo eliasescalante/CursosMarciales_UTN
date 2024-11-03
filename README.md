@@ -30,23 +30,57 @@ CAPTURAS DEL PROYECTO:
 
 ```plaintext
 CursosMarciales/
-│
 ├── manage.py
+├── contacto/
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── urls.py
+│   ├── models.py
+│   └── views.py
+├── usuarios/
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── urls.py
+│   ├── models.py
+│   └── views.py
+├── static/
+│   ├──academia/
+│   ├──contacto/
+│   ├──cursos/
+│   └── usuarios/
 ├── media/
+│   ├──academia/
+│       ├──css/
+│       └── js/
 ├── CursosMarciales/
 │   ├── __init__.py
 │   ├── settings.py
 │   ├── urls.py
-│   └── wsgi.py
+│   ├── wsgi.py
+│   └── asgi.py
 ├── cursos/
 │   ├── migrations/
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
+│   ├── urls.py
+│   ├── models.py
+│   └── views.py
+├── academia/
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── urls.py
 │   ├── models.py
 │   └── views.py
 └── templates/
     |__ admin/
     ├── cursos/
     ├── usuarios/
+    ├── academia/
     └── contacto/
