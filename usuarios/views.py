@@ -1,39 +1,45 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 from django.contrib import messages
+from .forms import UserRegistrationForm
+from .models import User
+from django.contrib.auth.decorators import login_required
 
-def index(request):
-    return HttpResponse("Página temporal")
+# Vista para el inicio
+@login_required
+def home(request):
+    return render(request, 'academia/home.html')  # Muestra la página de inicio solo para usuarios logueados
 
-
+# Vista para el login de usuario
 def user_login(request):
     if request.method == "POST":
         email = request.POST.get('email')
         password = request.POST.get('password')
-        
-        # Autenticación basada en el email en lugar de usuario
-        user = authenticate(request, username=email, password=password)
-        
-        if user is not None:
-            login(request, user)
-            return redirect('home')  # Redirige a la página principal o al dashboard
-        else:
+
+        try:
+            # Verifica si el email existe en el modelo Datosusuario
+            usuario = User.objects.get(email=email)
+            # Verifica si la contraseña es correcta
+            if usuario.check_password(password):
+                login(request, usuario)  # Inicia sesión con el modelo User de Django
+                return redirect('home')  # Redirige a la página de inicio
+            else:
+                messages.error(request, "Correo o contraseña incorrectos.")
+        except User.DoesNotExist:
             messages.error(request, "Correo o contraseña incorrectos.")
     
     return render(request, 'usuarios/login.html')
 
+# Vista para el registro de usuario
 def user_register(request):
-    if request.method == "POST":
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        
-        if User.objects.filter(email=email).exists():
-            messages.error(request, "Ya existe un usuario con ese correo.")
-        else:
-            user = User.objects.create_user(username=email, email=email, password=password)
-            login(request, user)  # Inicia sesión automáticamente tras el registro
-            return redirect('home')  # Redirige a la página principal o al dashboard
-
-    return render(request, 'usuarios/register.html')
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST, request.FILES)  # Asegúrate de pasar request.FILES aquí
+        if form.is_valid():
+            user = form.save(commit=False)  # No guardar aún para poder encriptar la contraseña
+            user.set_password(request.POST['password'])  # Encriptar la contraseña
+            user.save()  # Guardar el usuario en la base de datos
+            messages.success(request, "Te has registrado con éxito.")  # Mensaje de éxito
+            return redirect('login')  # Redirigir al login después de registrar el usuario
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'usuarios/register.html', {'form': form})

@@ -76,6 +76,12 @@ TEMPLATES = [
     },
 ]
 
+# Configuración de usuario personalizado
+AUTH_USER_MODEL = 'usuarios.User'  # O el nombre correcto de tu modelo
+
+
+
+
 WSGI_APPLICATION = "CursosMarciales.wsgi.application"
 
 
@@ -139,3 +145,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_URL = '/usuarios/login/'  # Esta es la URL a la que debe redirigir si no está autenticado
+
