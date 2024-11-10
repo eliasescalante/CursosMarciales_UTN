@@ -8,12 +8,16 @@
     <title>Tien Long Hu - Artes Marciales Chinas</title>
     <link rel="stylesheet" href="{% static 'academia/css/styles.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <script src="{% static 'academia/js/animation.js' %}"></script>
 </head>
 <body>
+
     <section class="unity">
         <h1>TIEN LONG HU | SHEN XIN LING - ARTES MARCIALES CHINAS</h1>
         <h2>ÚNETE HOY</h2>
-        <button class="btn-join">CONVIERTETE EN TU MEJOR VERSION</button>
+        <a href="{% url 'register' %}">
+            <button class="btn-join">CONVIERTETE EN TU MEJOR VERSION</button>
+        </a>
     </section>
 
     <section class="info section-full">
@@ -24,21 +28,22 @@
         <p>, integrando técnicas de maestros internacionales para una formación completa y auténtica.</p>
     </section>
 
-    <div class="courses">
-        <div class="courses-title">QUE OFRECEMOS</div>
-        <div class="courses-description">Nos comprometemos a brindarte con la mejor experiencia de entrenamiento.</div>
-        <div class="courses-container">
-            <div class="course-item course-item-1">
-                <h3>Nuestros Cursos</h3>
+    <section class="courses">
+            <div class="courses-title">QUE OFRECEMOS</div>
+            <div class="courses-description">Nos comprometemos a brindarte con la mejor experiencia de entrenamiento.</div>
+            <div class="courses-container">
+                <div class="course-item course-item-1">
+                    <h3>Cursos marciales para expandir tu conocimiento</h3>
+                </div>
+                <div class="course-item course-item-2">
+                    <h3>Clases grupales en nuestra Academia</h3>
+                </div>
+                <div class="course-item course-item-3">
+                    <h3>Entrenamientos personales</h3>
+                </div>
             </div>
-            <div class="course-item course-item-2">
-                <h3>Clases en nuestra Academia</h3>
-            </div>
-            <div class="course-item course-item-3">
-                <h3>Entrenamientos personales</h3>
-            </div>
-        </div>
-    </div>
+    </section>
+    
     
     <section class="testimonials section-full">
         <h2>Antes y Después</h2>

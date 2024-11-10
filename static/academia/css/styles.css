@@ -10,7 +10,33 @@ html, body {
     background-color: #000;
     font-size: 1.2rem;
 }
-
+/* Estilo general para las secciones */
+section {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    box-sizing: border-box;
+}
+section.visible {
+    opacity: 1;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+section:nth-child(odd) {
+    background-color: black;
+}
+section:nth-child(even) {
+    background-color: black;
+}
 h1, h2, h3, h4, h5, h6, .courses-title, .info h2 {
     font-family: 'Anton', sans-serif;
 }
@@ -18,6 +44,7 @@ h1, h2, h3, h4, h5, h6, .courses-title, .info h2 {
 p {
     font-size: 2rem;
 }
+
 /*ESTILO PARA LA SECCION UNITY [inicio]*/
 .unity {
     background-image: url('../../../media/academia/fondo_2.webp');
@@ -210,7 +237,7 @@ p {
     max-width: 300px;
     padding: 20px;
     background: #DAFF00;
-    color: #fff;
+    color: black;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -278,5 +305,3 @@ footer a {
 footer a:hover {
     color: #FFD700;
 }
-
-
