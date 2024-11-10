@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Curso  # Asegúrate de importar tu modelo
+from .models import Curso , Ticket
 
 class CursoAdmin(admin.ModelAdmin):
     # Puedes definir qué campos se mostrarán en el formulario de creación/edición
@@ -13,7 +13,13 @@ class CursoAdmin(admin.ModelAdmin):
     # Permitir filtrado y búsqueda
     list_filter = ('comision', 'Profesor')
     search_fields = ('nombre', 'Profesor')
-    ordering = ['-cupo']  # Puedes cambiar el orden según tus necesidades
+    ordering = ['-cupo']
+
+class TicketAdmin(admin.ModelAdmin):
+    list_display = ['usuario', 'curso', 'fecha_compra', 'estado']
+    list_filter = ['estado']
+    search_fields = ['usuario__username', 'curso__nombre']
 
 # Registra el modelo y la clase de administración
 admin.site.register(Curso, CursoAdmin)
+admin.site.register(Ticket, TicketAdmin)

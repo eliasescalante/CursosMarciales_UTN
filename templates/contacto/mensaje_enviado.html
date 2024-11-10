@@ -1,26 +1,30 @@
-{%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Contacto - Mi Sitio{% endblock %}
+
+{% block head %}
+    <!-- Enlaces a los estilos específicos de la página de contacto -->
     <link rel="stylesheet" href="{% static 'contacto/css/styles.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container-fluid  "   >
-        <div class="row reflexion justify-content-center align-items-center  " style="padding-top:20px;">   
-            <div class="col-8  " style="padding-top:40px; padding-bottom: 40px;">
-                <div>
-                    <center>
-                        <h1>MUCHAS GRACIAS!</h1>
-                        <p>En breve se van a contactar con vos para coordinar!</p>
-                        <p>Mientras tanto te invitamos a ver todos nuestros productos en la tienda minorista</p>
-                    </center>    
-                </div>
-            </div>  
-        </div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid  "   >
+    <div class="row reflexion justify-content-center align-items-center  " style="padding-top:20px;">   
+        <div class="col-8  " style="padding-top:40px; padding-bottom: 40px;">
+            <div>
+                <center>
+                    <h1>MUCHAS GRACIAS!</h1>
+                    <p>En breve se van a contactar con vos para coordinar!</p>
+                    <p>Mientras tanto te invitamos a ver todos nuestros productos en la tienda minorista</p>
+                </center>    
+            </div>
+        </div>  
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
+
+{% block js_extra %}
+<!-- Aquí puedes agregar scripts adicionales si es necesario -->
+{% endblock %}

@@ -1,32 +1,35 @@
-{%load static%}
+{% extends "layout.html" %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CONTACTO</title>
-        <link rel="stylesheet" href="{% static 'contacto/css/styles.css' %}">
-        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container-fluid"   >
-            <div class="row reflexion justify-content-around align-items-center border" style="padding-top:20px;">   
-                <div class="col-12 col-md-5 contacto_form" style="padding-bottom:15px;">
-                            <h1 class="h1juan" style="padding-left:15px;">DEJANOS UN MENSAJE</h1>    
-                            <form id="contact" action="" method="post" class="col-xs-12">{% csrf_token %} 		
-                                <div class="col-12 form-group" >
-                                    {{form }}
-                                </div> 
-                                <div class="row justify-content-between">
-                                    <div class="col-4"></div>
-                                    <div class="col-4" style="padding-right:30px;">
-                                        <button type="submit"  class=" col-12 btn btn-danger">Enviar</button>
-                                    </div>
-                                </div>                        
-                            </form>
-                </div>    
-            </div>
-        </div>  
-    </body>
-</html>
+{% block title %}Contacto - Mi Sitio{% endblock %}
+
+{% block head %}
+    <!-- Enlaces a los estilos específicos de la página de contacto -->
+    <link rel="stylesheet" href="{% static 'contacto/css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row reflexion justify-content-around align-items-center border" style="padding-top:20px;">   
+            <div class="col-12 col-md-5 contacto_form" style="padding-bottom:15px;">
+                <h1 class="h1juan" style="padding-left:15px;">DEJANOS UN MENSAJE</h1>    
+                <form id="contact" action="" method="post" class="col-xs-12">{% csrf_token %}         
+                    <div class="col-12 form-group">
+                        {{ form }}
+                    </div> 
+                    <div class="row justify-content-between">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <button type="submit" class="col-12 btn btn-danger">Enviar</button>
+                        </div>
+                    </div>                        
+                </form>
+            </div>    
+        </div>
+    </div>  
+{% endblock %}
+
+{% block js_extra %}
+<!-- Aquí puedes agregar scripts adicionales si es necesario -->
+{% endblock %}
