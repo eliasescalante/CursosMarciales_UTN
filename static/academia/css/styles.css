@@ -74,8 +74,8 @@ p {
 .btn-join {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #DAFF00;
-    color: #000;
+    background-color: #555;
+    color: white;
     border: none;
     border-radius: 5px;
     font-size: 2rem;
@@ -87,10 +87,32 @@ p {
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 .btn-join:hover {
-    background-color: yellow;
+    background-color: #DAFF00;
+    color: black;
 }
+/* Estilo del botón de login */
+.login-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px; 
+}
+.btn-login {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-login:hover {
+    background-color: #DAFF00;
+    color: #000;
+}
+
+
 /*ESTILO PARA LA SECCION INFO [seccion intermedia]*/
 .info {
     position: relative;
