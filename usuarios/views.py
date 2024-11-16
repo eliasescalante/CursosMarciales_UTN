@@ -3,13 +3,15 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .forms import UserRegistrationForm
 from .models import User
+from cursos.models import Curso
+
 from django.contrib.auth.decorators import login_required
 
 # Vista para el inicio
 @login_required
-def home(request):
-    return render(request, 'academia/home.html')  # Muestra la página de inicio solo para usuarios logueados
-
+def home_usuarios(request):
+    cursos = Curso.objects.all()
+    return render(request, 'cursos/home.html', {'cursos': cursos})  # Muestra la página de inicio solo para usuarios logueados
 # Vista para el login de usuario
 def user_login(request):
     if request.method == "POST":
@@ -22,7 +24,7 @@ def user_login(request):
             # Verifica si la contraseña es correcta
             if usuario.check_password(password):
                 login(request, usuario)  # Inicia sesión con el modelo User de Django
-                return redirect('home')  # Redirige a la página de inicio
+                return redirect('home_usuarios')  # Redirige a la página de inicio
             else:
                 messages.error(request, "Correo o contraseña incorrectos.")
         except User.DoesNotExist:
