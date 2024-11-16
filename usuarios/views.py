@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 def home_usuarios(request):
     cursos = Curso.objects.all()
     return render(request, 'cursos/home.html', {'cursos': cursos})  # Muestra la página de inicio solo para usuarios logueados
+    
 # Vista para el login de usuario
 def user_login(request):
     if request.method == "POST":
