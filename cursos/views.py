@@ -1,5 +1,6 @@
-from django.http import HttpResponse
+from .models import Curso
 
-def index(request):
-    return HttpResponse("Página temporal")
-
+def home(request):
+    cursos = Curso.objects.all()  # O la consulta que necesites
+    print(cursos)  # Verifica que los cursos están siendo recuperados correctamente
+    return render(request, 'home.html', {'cursos': cursos})

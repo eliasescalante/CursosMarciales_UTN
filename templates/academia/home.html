@@ -3,11 +3,43 @@
 
 {% block title %}Inicio - Mi Sitio{% endblock %}
 
-
 {% block content %}
     <h1>Bienvenido a la página de inicio</h1>
     <p>Contenido específico para la página de inicio.</p>
+
+    <!-- para debugear los cursos porque no me levanta -->
+    {% if cursos %}
+        <p>Cursos encontrados: {{ cursos.count }}</p>
+    {% else %}
+        <p>No se encontraron cursos.</p>
+    {% endif %}
+
+    {% include 'descripcion_lateral.html' %}
+
+    <!-- Carrusel de cursos -->
+    <div id="cursoCarrusel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for curso in cursos %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ curso.imagen.url }}" class="d-block w-100" alt="{{ curso.nombre }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ curso.nombre }}</h5>
+                        <p>{{ curso.descripcion }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#cursoCarrusel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#cursoCarrusel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 {% endblock %}
 
 {% block js_extra %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}
