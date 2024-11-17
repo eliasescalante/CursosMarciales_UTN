@@ -49,7 +49,10 @@
                                     <img src="{% static 'profile_images/1.jpg' %}" alt="Usuario" class="rounded-circle" style="width: 35px; height: 35px;">
                                 {% endif %}
                                 {{ user.username }}
-                            </a>                       
+                            </a>               
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}" class="btn btn-danger">Cerrar sesión</a>        
                         </li>
                     </ul>
                 </div>

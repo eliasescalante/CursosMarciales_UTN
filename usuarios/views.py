@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import UserRegistrationForm
 from .models import User
 from cursos.models import Curso
-
 from django.contrib.auth.decorators import login_required
 
 # Vista para el inicio
@@ -32,6 +31,10 @@ def user_login(request):
             messages.error(request, "Correo o contraseña incorrectos.")
     
     return render(request, 'usuarios/login.html')
+
+def user_logout(request):
+    logout(request)
+    return redirect('index')
 
 # Vista para el registro de usuario
 def user_register(request):
