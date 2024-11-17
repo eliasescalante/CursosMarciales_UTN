@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     # App de la aplicación
     "usuarios.apps.UsuariosConfig",
     "cursos.apps.CursosConfig",
-    "contacto.apps.ContatoConfig",
+    "contacto.apps.ContactoConfig",
     "academia.apps.AcademiaConfig",
     # App de terceros
     "captcha"
