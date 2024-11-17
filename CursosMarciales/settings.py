@@ -40,10 +40,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # App de la aplicación
-    "usuarios",
-    "cursos",
-    "contacto",
-    "academia",
+    "usuarios.apps.UsuariosConfig",
+    "cursos.apps.CursosConfig",
+    "contacto.apps.ContatoConfig",
+    "academia.apps.AcademiaConfig",
     # App de terceros
     "captcha"
 ]
