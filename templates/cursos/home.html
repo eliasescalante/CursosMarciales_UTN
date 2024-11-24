@@ -44,8 +44,44 @@
         </div>
     </div>
 
+    <!-- Sección de Búsqueda y Ordenación -->
+    <section id="search-section" class="mt-5">
+        <h2>Buscar Cursos</h2>
+
+        <!-- Formulario para buscar cursos y ordenar -->
+        <form method="GET" action="{% url 'home_cursos' %}">
+            <div class="mb-3">
+                <input type="text" name="q" class="form-control" placeholder="Buscar cursos..." value="{{ query }}">
+            </div>
+            <div class="mb-3">
+                <select name="order" class="form-select">
+                    <option value="">Ordenar por</option>
+                    <option value="alfabetico" {% if order == 'alfabetico' %}selected{% endif %}>Alfabéticamente</option>
+                    <option value="precio" {% if order == 'precio' %}selected{% endif %}>Por Precio</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+
+        <!-- Resultados de búsqueda -->
+        <div id="course-results" class="mt-4">
+            {% if cursos %}
+                <ul class="list-group">
+                    {% for curso in cursos %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ curso.nombre }} - ${{ curso.precio }}
+                            <a href="{% url 'detalle_curso' curso.id %}" class="btn btn-outline-primary btn-sm">Ver detalles</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No se encontraron cursos.</p>
+            {% endif %}
+        </div>
+    </section>
+
     <style>
-        body{
+        body {
             background-color: white;
         }
 
@@ -54,13 +90,28 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: #DAFF00;
-            background-color: rgba(0, 0, 0, 0.1); 
+            background-color: rgba(0, 0, 0, 0.1);
         }
 
         .carousel-item img {
-            width: 100%;               
-            height: 700px;             
-            object-fit: contain;      
+            width: 100%;
+            height: 700px;
+            object-fit: contain;
+        }
+
+        #search-section {
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        #search-section h2 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #course-results .list-group-item {
+            font-size: 1.2rem;
         }
     </style>
 {% endblock %}

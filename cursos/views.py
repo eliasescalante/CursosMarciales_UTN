@@ -6,7 +6,20 @@ from django.http import JsonResponse
 
 def home_cursos(request):
     cursos = Curso.objects.all()  # O la consulta que necesites
-    return render(request, 'home.html', {'cursos': cursos})
+
+    # Filtrar por nombre si se especifica
+    query = request.GET.get('q', '')
+    if query:
+        cursos = cursos.filter(nombre__icontains=query)
+    
+    # Ordenar por precio o por nombre
+    order = request.GET.get('order', '')
+    if order == 'alfabetico':
+        cursos = cursos.order_by('nombre')
+    elif order == 'precio':
+        cursos = cursos.order_by('precio')
+
+    return render(request, 'cursos/home.html', {'cursos': cursos})
 
 def noticias(request):
     return render(request, 'cursos/noticias.html')
