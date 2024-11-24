@@ -25,10 +25,14 @@
         <div class="card-footer d-flex justify-content-between align-items-center">
             {% if user.is_authenticated %}
                 {% if not inscripto %}
-                    <form action="{% url 'inscribirse_curso' curso.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">Inscribirse</button>
-                    </form>
+                    {% if not cupos %}
+                        <form action="{% url 'inscribirse_curso' curso.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Inscribirse</button>
+                        </form>
+                    {% else %}
+                        <p>No hay cupos disponibles para este curso.</p>
+                    {% endif %}
                 {% else %}
                     <p>Ya estás inscrito en este curso.</p>
                 {% endif %}
@@ -40,4 +44,17 @@
     </div>
 </div>
 
+{% if no_cupos %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: '¡Oops!',
+                text: 'El curso no tiene cupos disponibles.'
+            });
+        });
+    </script>
+{% endif %}
+
 {% endblock %}
+

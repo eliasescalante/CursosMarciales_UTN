@@ -64,8 +64,9 @@ def detalle_curso(request, curso_id):
 
     # Verificar si el usuario ya está inscrito en el curso
     inscripto = Ticket.objects.filter(usuario=usuario, curso=curso).exists()
+    cupos = curso.cupo <= 0
 
-    return render(request, 'cursos/detalle_curso.html', {'curso': curso, 'inscripto': inscripto})
+    return render(request, 'cursos/detalle_curso.html', {'curso': curso, 'inscripto': inscripto, 'cupos': cupos})
 
 
 
