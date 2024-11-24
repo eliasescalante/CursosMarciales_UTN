@@ -1,6 +1,5 @@
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import EmailValidator  # Asegúrate de importar esto
-
 from django.db import models
 
 class User(AbstractUser):
@@ -16,3 +15,15 @@ class User(AbstractUser):
 
     def __str__(self):
         return "usuario: " + self.username
+
+class Perfil(models.Model):
+    user = models.OneToOneField(
+        User,  # Relación con el modelo User personalizado
+        on_delete=models.CASCADE,
+        related_name='perfil'
+    )
+    bio = models.TextField(blank=True)  # Campo para una breve biografía
+    fecha_creacion = models.DateTimeField(auto_now_add=True)  # Fecha de creación automática
+
+    def __str__(self):
+        return f"Perfil de {self.user.username}"

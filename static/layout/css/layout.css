@@ -4,10 +4,18 @@ html, body {
     margin: 0; 
 }
 
+.nav-item.dropdown .dropdown-menu {
+    z-index: 1050; /* Asegura que el dropdown se muestre por encima de otros elementos */
+}
+
 .main-container {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.navbar {
+    flex-shrink: 0;  /* Previene que la barra de navegación se reduzca */
 }
 
 .content {
