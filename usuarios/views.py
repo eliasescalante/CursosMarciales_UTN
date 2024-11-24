@@ -77,3 +77,6 @@ def perfil(request):
         'user_form': user_form,
         'perfil_form': perfil_form
     })
+
+def mi_carrito(request):
+    return render(request, 'usuarios/carrito.html')
