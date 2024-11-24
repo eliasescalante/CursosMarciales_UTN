@@ -5,7 +5,10 @@
 {% block content %}
 <div class="container mt-5">
     <div class="card">
-        <img src="{{ curso.imagen.url }}" class="card-img-top" alt="{{ curso.nombre }}" style="max-height: 300px; object-fit: cover;">
+        <!-- Imagen del curso con estilo mejorado -->
+        <img src="{{ curso.imagen.url }}" class="card-img-top" alt="{{ curso.nombre }}" 
+             style="max-height: 700%; object-fit: cover; width: 100%;">
+
         <div class="card-body">
             <h2 class="card-title">{{ curso.nombre }}</h2>
             <p class="card-text"><strong>Comisión:</strong> {{ curso.comision }}</p>
@@ -15,7 +18,8 @@
             <p class="card-text"><strong>Precio:</strong> ${{ curso.precio }}</p>
             <p class="card-text"><strong>Dirección:</strong> {{ curso.direccion }}</p>
         </div>
-        <div class="card-footer">
+        
+        <div class="card-footer d-flex justify-content-between align-items-center">
             {% if user.is_authenticated %}
                 <form action="{% url 'inscribirse_curso' curso.id %}" method="post">
                     {% csrf_token %}

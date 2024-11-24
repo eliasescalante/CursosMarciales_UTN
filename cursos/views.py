@@ -44,10 +44,26 @@ def mis_cursos(request):
     tickets = Ticket.objects.filter(usuario=request.user).select_related('curso')
 
     # Extraer los cursos de los tickets
-    cursos = [ticket.curso for ticket in tickets]
+    # Crear una lista de diccionarios con la información necesaria para la vista
+    cursos = [{'curso': ticket.curso, 'ticket_id': ticket.id} for ticket in tickets]
+    # Depurar el contexto
+    print(cursos)  # Verifica los datos en consola
 
     return render(request, 'cursos/mis_cursos.html', {'cursos': cursos})
 
 def detalle_curso(request, curso_id):
     curso = get_object_or_404(Curso, id=curso_id)
     return render(request, 'cursos/detalle_curso.html', {'curso': curso})
+
+@login_required
+def desuscribirse_curso(request, ticket_id):
+    try:
+        # Buscar el ticket correspondiente
+        ticket = Ticket.objects.get(id=ticket_id, usuario=request.user)
+        ticket.delete()
+        # Mensaje de éxito
+        messages.success(request, f"Te has desuscripto del curso: {ticket.curso.nombre} con éxito.")
+    except Ticket.DoesNotExist:
+        # Mensaje de error
+        messages.error(request, "No se pudo completar la desuscripción. El ticket no existe o no tienes permiso.")
+    return redirect('mis_cursos')

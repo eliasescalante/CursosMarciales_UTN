@@ -3,6 +3,7 @@
 {% block title %}Mis Cursos{% endblock %}
 
 {% block content %}
+
 <div class="container mt-5">
     <h1 class="text-center">Mis Cursos</h1>
     
@@ -11,12 +12,22 @@
             {% for curso in cursos %}
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="{{ curso.imagen.url }}" class="card-img-top" alt="{{ curso.nombre }}">
+                        <img src="{{ curso.curso.imagen.url }}" class="card-img-top" alt="{{ curso.curso.nombre }}">
                         <div class="card-body">
-                            <h5 class="card-title">{{ curso.nombre }}</h5>
-                            <p class="card-text">{{ curso.Descripcion|truncatewords:15 }}</p>
-                            <p><strong>Profesor:</strong> {{ curso.Profesor }}</p>
-                            <a href="{% url 'detalle_curso' curso.id %}" class="btn btn-primary">Ver más detalles</a>
+                            <h5 class="card-title">{{ curso.curso.nombre }}</h5>
+                            <p class="card-text">{{ curso.curso.Descripcion|truncatewords:15 }}</p>
+                            <p><strong>Profesor:</strong> {{ curso.curso.Profesor }}</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'detalle_curso' curso.curso.id %}" class="btn btn-primary">Ver más detalles</a>
+                                
+                                <!-- Formulario para desuscribirse, dentro del ciclo -->
+                                <form id="desuscribir-form-{{ curso.ticket_id }}" action="{% url 'desuscribirse_curso' curso.ticket_id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="button" class="btn btn-danger" onclick="confirmarDesuscripcion({{ curso.ticket_id }})">
+                                        Desuscribirse
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -26,4 +37,32 @@
         <p class="text-center">No estás inscrito en ningún curso actualmente.</p>
     {% endif %}
 </div>
+
+<script>
+    // Función para confirmar la desuscripción
+    function confirmarDesuscripcion(ticketId) {
+        console.log('Desuscribirse clickeado para ticket ID:', ticketId);  // Verifica que la función sea llamada
+        
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡Esta acción no se puede deshacer!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, desuscribirme'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Busca el formulario dinámico por el ID y lo envía
+                const form = document.getElementById(`desuscribir-form-${ticketId}`);
+                if (form) {
+                    form.submit(); // Envía el formulario si lo encuentra
+                } else {
+                    console.error(`Formulario con ID desuscribir-form-${ticketId} no encontrado.`);
+                }
+            }
+        });
+    }
+</script>
+
 {% endblock %}
