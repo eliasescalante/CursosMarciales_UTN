@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, UserUpdateForm, PerfilUpdateForm
 from .models import User
 from cursos.models import Curso
 from django.contrib.auth.decorators import login_required
@@ -49,3 +49,31 @@ def user_register(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'usuarios/register.html', {'form': form})
+
+@login_required
+def perfil(request):
+    # Obtener el usuario logueado
+    user = request.user
+    perfil = user.perfil
+
+    if request.method == 'POST':
+        # Crear los formularios con los datos recibidos del POST
+        user_form = UserUpdateForm(request.POST, request.FILES, instance=user)
+        perfil_form = PerfilUpdateForm(request.POST, instance=perfil)
+
+        if user_form.is_valid() and perfil_form.is_valid():
+            # Guardar los formularios si son válidos
+            user_form.save()
+            perfil_form.save()
+            messages.success(request, 'Tu perfil ha sido actualizado correctamente.')
+            return redirect('perfil')  # Redirigir a la misma página
+
+    else:
+        # Si es GET, llenar los formularios con los datos actuales
+        user_form = UserUpdateForm(instance=user)
+        perfil_form = PerfilUpdateForm(instance=perfil)
+
+    return render(request, 'usuarios/perfil.html', {
+        'user_form': user_form,
+        'perfil_form': perfil_form
+    })
