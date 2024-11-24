@@ -3,6 +3,9 @@
 {% block title %}Detalle del Curso - {{ curso.nombre }}{% endblock %}
 
 {% block content %}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <div class="container mt-5">
     <div class="card">
         <!-- Imagen del curso con estilo mejorado -->
@@ -21,10 +24,14 @@
         
         <div class="card-footer d-flex justify-content-between align-items-center">
             {% if user.is_authenticated %}
-                <form action="{% url 'inscribirse_curso' curso.id %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">Inscribirse</button>
-                </form>
+                {% if not inscripto %}
+                    <form action="{% url 'inscribirse_curso' curso.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Inscribirse</button>
+                    </form>
+                {% else %}
+                    <p>Ya estás inscrito en este curso.</p>
+                {% endif %}
             {% else %}
                 <p><a href="{% url 'login' %}">Inicia sesión</a> para inscribirte en este curso.</p>
             {% endif %}
@@ -32,4 +39,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

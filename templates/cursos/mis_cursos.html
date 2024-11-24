@@ -3,6 +3,7 @@
 {% block title %}Mis Cursos{% endblock %}
 
 {% block content %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="container mt-5">
     <h1 class="text-center">Mis Cursos</h1>
@@ -56,7 +57,46 @@
                 // Busca el formulario dinámico por el ID y lo envía
                 const form = document.getElementById(`desuscribir-form-${ticketId}`);
                 if (form) {
-                    form.submit(); // Envía el formulario si lo encuentra
+                    // Usar fetch para enviar el formulario como una solicitud AJAX
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: {
+                            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Asegúrate de que el CSRF token esté incluido
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Mostrar el mensaje de éxito
+                            Swal.fire({
+                                title: 'Desuscripción exitosa',
+                                text: data.message,
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then(() => {
+                                // Después de que el usuario haga clic en OK, redirige a 'mis_cursos'
+                                window.location.href = "{% url 'mis_cursos' %}";
+                            });
+                        } else {
+                            // Mostrar mensaje de error si la desuscripción falló
+                            Swal.fire({
+                                title: 'Error',
+                                text: data.message,
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al desuscribirse:', error);
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Hubo un problema al procesar la desuscripción.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    });
                 } else {
                     console.error(`Formulario con ID desuscribir-form-${ticketId} no encontrado.`);
                 }
@@ -64,5 +104,7 @@
         });
     }
 </script>
+
+
 
 {% endblock %}

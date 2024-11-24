@@ -5,6 +5,7 @@ from .forms import UserRegistrationForm, UserUpdateForm, PerfilUpdateForm
 from .models import User
 from cursos.models import Curso
 from django.contrib.auth.decorators import login_required
+from django.contrib.messages import get_messages
 
 # Vista para el inicio
 @login_required
@@ -14,6 +15,11 @@ def home_usuarios(request):
     
 # Vista para el login de usuario
 def user_login(request):
+
+    storage = get_messages(request)
+    for _ in storage:  # Esto vacía los mensajes existentes
+        pass
+
     if request.method == "POST":
         email = request.POST.get('email')
         password = request.POST.get('password')

@@ -1,0 +1,15 @@
+<!-- cursos/ticket.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+  <div class="ticket-details">
+    <h1>Detalles del Ticket</h1>
+    <p><strong>ID del Ticket:</strong> {{ ticket.id }}</p>
+    <p><strong>Curso:</strong> {{ ticket.curso.nombre }}</p>
+    <p><strong>Profesor:</strong> {{ ticket.curso.profesor }}</p>
+    <p><strong>Estado del Ticket:</strong> {{ ticket.estado }}</p>
+    <p><strong>Fecha de Inscripción:</strong> {{ ticket.fecha_inscripcion }}</p>
+
+    <a href="{% url 'mis_cursos' %}" class="btn btn-primary">Volver a Mis Cursos</a>
+  </div>
+{% endblock %}
