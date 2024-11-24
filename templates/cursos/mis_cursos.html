@@ -1,29 +1,29 @@
 {% extends 'layout.html' %}
-{% block title %}CURSOS MARCIALES - MIS CURSOS{% endblock %}
+
+{% block title %}Mis Cursos{% endblock %}
 
 {% block content %}
-<div class="container-center">
-    <h1>EN CONSTRUCCIÓN</h1>
+<div class="container mt-5">
+    <h1 class="text-center">Mis Cursos</h1>
+    
+    {% if cursos %}
+        <div class="row">
+            {% for curso in cursos %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ curso.imagen.url }}" class="card-img-top" alt="{{ curso.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ curso.nombre }}</h5>
+                            <p class="card-text">{{ curso.Descripcion|truncatewords:15 }}</p>
+                            <p><strong>Profesor:</strong> {{ curso.Profesor }}</p>
+                            <a href="{% url 'detalle_curso' curso.id %}" class="btn btn-primary">Ver más detalles</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">No estás inscrito en ningún curso actualmente.</p>
+    {% endif %}
 </div>
-
-<style>
-    .container-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 80vh; /* Ajusta al tamaño del viewport */
-        text-align: center;
-        font-family: Arial, sans-serif; /* Cambia según tu preferencia */
-        background-color: #f7f7f7; /* Fondo claro para resaltar el mensaje */
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #333; /* Color oscuro para destacar */
-        margin: 0;
-    }
-</style>
 {% endblock %}

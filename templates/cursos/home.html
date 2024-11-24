@@ -25,8 +25,8 @@
                             <h5 style="font-size: 2rem; font-weight: bold;">{{ curso.nombre }}</h5>
                         </div>
                         <div class="carousel-caption d-none d-md-block text-white p-4 position-absolute bottom-0 start-0 w-100 bg-opacity-50">
-                            <p style="font-size: 1.2rem;">{{ curso.Descripcion|truncatewords:20 }}</p> <!-- Descripción truncada -->
-                            <a href="#" class="btn btn-primary">Conocer más</a>
+                            <p style="font-size: 1.2rem;">{{ curso.Descripcion|truncatewords:100 }}</p> <!-- Descripción truncada -->
+                            <a href="{% url 'detalle_curso' curso.id %}" class="btn btn-primary">Conocer más</a>
                         </div>
                     </div>
                 {% endfor %}

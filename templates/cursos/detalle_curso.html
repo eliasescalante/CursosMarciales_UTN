@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}Detalle del Curso - {{ curso.nombre }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <img src="{{ curso.imagen.url }}" class="card-img-top" alt="{{ curso.nombre }}" style="max-height: 300px; object-fit: cover;">
+        <div class="card-body">
+            <h2 class="card-title">{{ curso.nombre }}</h2>
+            <p class="card-text"><strong>Comisión:</strong> {{ curso.comision }}</p>
+            <p class="card-text"><strong>Profesor:</strong> {{ curso.Profesor }}</p>
+            <p class="card-text"><strong>Descripción:</strong> {{ curso.Descripcion }}</p>
+            <p class="card-text"><strong>Cupo disponible:</strong> {{ curso.cupo }}</p>
+            <p class="card-text"><strong>Precio:</strong> ${{ curso.precio }}</p>
+            <p class="card-text"><strong>Dirección:</strong> {{ curso.direccion }}</p>
+        </div>
+        <div class="card-footer">
+            {% if user.is_authenticated %}
+                <form action="{% url 'inscribirse_curso' curso.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Inscribirse</button>
+                </form>
+            {% else %}
+                <p><a href="{% url 'login' %}">Inicia sesión</a> para inscribirte en este curso.</p>
+            {% endif %}
+            <a href="{% url 'home_usuarios' %}" class="btn btn-secondary mt-2">Volver</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
