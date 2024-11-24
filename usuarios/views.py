@@ -28,7 +28,7 @@ def user_login(request):
             else:
                 messages.error(request, "Correo o contraseña incorrectos.")
         except User.DoesNotExist:
-            messages.error(request, "Correo o contraseña incorrectos.")
+            messages.error(request, "El usuario no se encuentra regsitrado.")
     
     return render(request, 'usuarios/login.html')
 

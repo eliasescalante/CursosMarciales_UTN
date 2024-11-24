@@ -32,14 +32,17 @@
     {% if messages %}
         <script>
             {% for message in messages %}
-                Swal.fire({
-                    icon: 'error',
-                    title: '¡Oops!',
-                    text: '{{ message }}'
-                });
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Oops!',
+                        text: '{{ message }}'
+                    });
+                {% endif %}
             {% endfor %}
-        </script>
+        </script>   
     {% endif %}
+
 
 </body>
 </html>
