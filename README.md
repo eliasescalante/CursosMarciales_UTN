@@ -25,4 +25,4 @@ Este es un proyecto desarrollado como parte del trabajo de nivel intermedio de l
 CAPTURAS DEL PROYECTO:
 
 <img src="https://github.com/eliasescalante/CursosMarciales_UTN/blob/master/media/captura.png" width="600" />
-<img src="" width="600"/>
+<img src="https://github.com/eliasescalante/CursosMarciales_UTN/blob/master/media/captura2.png" width="600"/>
