@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, Perfil
 from django.utils.html import format_html
+from .models import User, Perfil
 
 class CustomUserAdmin(UserAdmin):
     # Campos a mostrar en la lista del admin
@@ -15,30 +15,38 @@ class CustomUserAdmin(UserAdmin):
 
     # Configuración de los grupos de campos en el formulario de edición
     fieldsets = (
-        (None, {'fields': ('username', 'password')}),
-        ('Información Personal', {'fields': ('first_name', 'last_name', 'email', 'fecha_nacimiento', 'imagen', 'ciudad', 'domicilio', 'telefono')}),
-        ('Permisos', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
-        ('Fechas Importantes', {'fields': ('last_login', 'date_joined')}),
+        (None, {'fields': ('username', 'password')}),  # Campos básicos (usuario y contraseña)
+        ('Información Personal', {
+            'fields': ('first_name', 'last_name', 'email', 'fecha_nacimiento', 'imagen', 'ciudad', 'domicilio', 'telefono')
+        }),  # Información adicional del usuario
+        ('Permisos', {
+            'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')
+        }),  # Permisos
+        ('Fechas Importantes', {'fields': ('last_login', 'date_joined')}),  # Fechas de creación y modificación
     )
 
     # Campos a mostrar en el formulario de creación
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'password1', 'password2', 'first_name', 'last_name', 'ciudad', 'imagen'),
-        }),
+            'fields': ('username', 'email', 'password1', 'password2', 'first_name', 'last_name', 'fecha_nacimiento', 'imagen', 'ciudad', 'domicilio', 'telefono')
+        }),  # Campos de la creación de usuarios, incluyendo todos los campos del modelo
     )
 
     # Ordenar por defecto por username
     ordering = ('username',)
 
     def preview_image(self, obj):
+        """Mostrar una vista previa de la imagen de perfil en la lista de usuarios."""
         if obj.imagen:
             return format_html('<img src="{}" width="50" style="border-radius:50%;">', obj.imagen.url)
         return "Sin imagen"
 
     preview_image.short_description = "Imagen de Perfil"
 
+
+# Registrar el modelo User con la configuración personalizada
+admin.site.register(User, CustomUserAdmin)
 
 # Personalizar el admin para el modelo Perfil
 @admin.register(Perfil)
