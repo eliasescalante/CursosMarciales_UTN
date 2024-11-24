@@ -8,9 +8,8 @@
 
 <div class="container mt-5">
     <div class="card">
-        <!-- Imagen del curso con estilo mejorado -->
         <img src="{{ curso.imagen.url }}" class="card-img-top" alt="{{ curso.nombre }}" 
-             style="max-height: 700%; object-fit: cover; width: 100%;">
+            style="max-height: 700%; object-fit: cover; width: 100%;">
 
         <div class="card-body">
             <h2 class="card-title">{{ curso.nombre }}</h2>
@@ -44,7 +43,7 @@
     </div>
 </div>
 
-{% if no_cupos %}
+{% if cupos %}
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             Swal.fire({

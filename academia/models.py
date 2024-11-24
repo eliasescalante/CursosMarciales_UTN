@@ -26,3 +26,14 @@ class InscripcionClase(models.Model):
 
     def __str__(self):
         return f"{self.usuario.username} inscrito en {self.clase.nombre}"
+
+class Noticia(models.Model):
+
+    titulo = models.CharField(max_length=255)
+    contenido = models.TextField()
+    fecha_publicacion = models.DateTimeField(auto_now_add=True)
+    imagen = models.ImageField(upload_to='noticias/', null=True, blank=True)
+    mostrar = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.titulo
