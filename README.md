@@ -7,8 +7,9 @@ Este es un proyecto desarrollado como parte del trabajo de nivel intermedio de l
 ## Funcionalidades
 
 - **Registro de Usuarios**: Los usuarios pueden registrarse en la plataforma, creando una cuenta con información personal.
+- **Registro de Usuarios**: Los usuarios pueden ademas modificar su informacion personal ademas de agregar imagenes de avatar.
 - **Autenticación**: Sistema de inicio de sesión para acceder a la plataforma.
-- **Administración de Cursos**: Los administradores pueden crear, modificar y eliminar cursos a través de la interfaz de administración de Django.
+- **Administración de Cursos**: Los administradores pueden crear, modificar y eliminar cursos y  noticias a través de la interfaz de administración de Django.
 - **Visualización de Cursos**: Los usuarios pueden explorar diferentes cursos marciales disponibles, con detalles como nombre, descripción, profesor, precio, entre otros.
 - **Inscripción en Cursos**: Los usuarios pueden inscribirse en los cursos de su interés y gestionar su inscripción.
 - **Gestión de Imágenes**: Cada curso puede tener una imagen asociada para mejorar la presentación visual.
