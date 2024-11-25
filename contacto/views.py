@@ -8,24 +8,24 @@ from django.views.generic import FormView
 
 # https://docs.djangoproject.com/es/3.2/topics/class-based-views/generic-editing/
 
-
 class Contacto(FormView):
-
+    """
+    Vista para el formulario de contacto
+    """
     template_name = "contacto/contacto.html"
     form_class = ConsultaForm
     success_url = "mensaje_enviado"
 
     def form_valid(self, form):
-        # Si el formulario es valido, hace esto:
-        # 1) Llama al método save() que se encuentra dentro del formulario
-        # 2) Redirecciona
         form.save()
         form.send_email()
         return super().form_valid(form)
 
 
 class MensajeEnviado(View):
-
+    """
+    Vista para el mensaje de que el mensaje ha sido enviado
+    """
     template = "contacto/mensaje_enviado.html"
 
     def get(self, request):

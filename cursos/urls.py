@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+#Rutas de cursos
 urlpatterns = [
     path('home/', views.home_cursos, name='home_cursos'),
     path('noticias/', views.noticias, name='noticias'),

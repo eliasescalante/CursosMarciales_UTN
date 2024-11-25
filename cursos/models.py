@@ -3,6 +3,9 @@ from django.conf import settings
 
 # Create your models here.
 class Curso(models.Model):
+    """
+    Modelo para representar un curso.
+    """
 
     nombre = models.CharField(max_length=50)
     comision = models.CharField(max_length=20)
@@ -17,7 +20,10 @@ class Curso(models.Model):
         return "curso: " + self.nombre
 
 class Ticket(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # Usamos settings.AUTH_USER_MODEL
+    """
+    Modelo para representar un ticket.
+    """
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     curso = models.ForeignKey('Curso', on_delete=models.CASCADE)
     fecha_compra = models.DateTimeField(auto_now_add=True)
     estado = models.CharField(max_length=20, choices=[('pendiente', 'Pendiente'), ('pagado', 'Pagado')], default='pendiente')

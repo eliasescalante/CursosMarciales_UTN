@@ -7,5 +7,8 @@ def index(request):
     return render(request, 'academia/index.html', {'MEDIA_URL' : settings.MEDIA_URL})
 
 def noticias(request):
+    """
+    View que lista todas as notícias
+    """
     noticias = Noticia.objects.all().order_by('-fecha_publicacion')
     return render(request, 'academia/noticias.html', {'noticias': noticias})

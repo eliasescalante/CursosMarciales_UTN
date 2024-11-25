@@ -78,8 +78,8 @@ TEMPLATES = [
     },
 ]
 
-# Configuración de usuario personalizado
-AUTH_USER_MODEL = 'usuarios.User'  # O el nombre correcto de tu modelo
+
+AUTH_USER_MODEL = 'usuarios.User'
 
 
 
@@ -134,14 +134,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Cambié el nombre a "staticfiles" para evitar confusión
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Solo incluir la carpeta estática que contiene tus archivos CSS, JS, etc.
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Aquí solo se debe incluir la carpeta estática que contiene tus archivos
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 # Default primary key field type
@@ -149,5 +149,5 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_URL = '/usuarios/login/'  # Esta es la URL a la que debe redirigir si no está autenticado
+LOGIN_URL = '/usuarios/login/'
 

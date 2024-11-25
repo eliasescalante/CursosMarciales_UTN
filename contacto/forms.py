@@ -6,7 +6,9 @@ from captcha.fields import CaptchaField
 from datetime import datetime
 
 class ConsultaForm(ModelForm):
-
+    """
+    Formulario para crear consultas
+    """
     captcha = CaptchaField()
 
     class Meta:
@@ -19,13 +21,15 @@ class ConsultaForm(ModelForm):
         ]
 
     def send_email(self):
+        """
+        Envia un correo electrónico con la información de la consulta
+        """
 
         nombre = self.cleaned_data["nombre"]
         descripcion = self.cleaned_data["descripcion"]
         mail = self.cleaned_data["mail"]
         telefono = self.cleaned_data["telefono"]
 
-        #valores por defaul
         fecha = datetime.now().date()
         estado_respuesta = "No contestada"
         

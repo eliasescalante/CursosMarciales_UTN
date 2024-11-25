@@ -21,7 +21,7 @@ def user_login(request):
     Vista para el login de usuario
     """
     storage = get_messages(request)
-    for _ in storage:  # Esto vacía los mensajes existentes
+    for _ in storage:
         pass
 
     if request.method == "POST":
@@ -29,12 +29,10 @@ def user_login(request):
         password = request.POST.get('password')
 
         try:
-            # Verifica si el email existe en el modelo Datosusuario
             usuario = User.objects.get(email=email)
-            # Verifica si la contraseña es correcta
             if usuario.check_password(password):
-                login(request, usuario)  # Inicia sesión con el modelo User de Django
-                return redirect('home_usuarios')  # Redirige a la página de inicio
+                login(request, usuario)
+                return redirect('home_usuarios')
             else:
                 messages.error(request, "Correo o contraseña incorrectos.")
         except User.DoesNotExist:
@@ -43,25 +41,33 @@ def user_login(request):
     return render(request, 'usuarios/login.html')
 
 def user_logout(request):
+    """
+    Vista para el logout de usuario
+    """
     logout(request)
     return redirect('index')
 
-# Vista para el registro de usuario
 def user_register(request):
+    """
+    Vista para el registro de usuario.
+    """
     if request.method == 'POST':
-        form = UserRegistrationForm(request.POST, request.FILES)  # Asegúrate de pasar request.FILES aquí
+        form = UserRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
-            user = form.save(commit=False)  # No guardar aún para poder encriptar la contraseña
-            user.set_password(request.POST['password'])  # Encriptar la contraseña
-            user.save()  # Guardar el usuario en la base de datos
-            messages.success(request, "Te has registrado con éxito.")  # Mensaje de éxito
-            return redirect('login')  # Redirigir al login después de registrar el usuario
+            user = form.save(commit=False)
+            user.set_password(request.POST['password'])
+            user.save()
+            messages.success(request, "Te has registrado con éxito.")
+            return redirect('login')
     else:
         form = UserRegistrationForm()
     return render(request, 'usuarios/register.html', {'form': form})
 
 @login_required
 def perfil(request):
+    """
+    Vista para el perfil del usuario
+    """
     user = request.user
     perfil = user.perfil
     return render(request, 'usuarios/perfil.html', {
@@ -71,6 +77,9 @@ def perfil(request):
 
 @login_required
 def editar_perfil(request):
+    """
+    Vista para editar el perfil de un usuario.
+    """
     user = request.user
     perfil = user.perfil
 
@@ -82,7 +91,7 @@ def editar_perfil(request):
             user_form.save()
             perfil_form.save()
             messages.success(request, 'Tu perfil ha sido actualizado correctamente.')
-            return redirect('perfil')  # Redirigir al perfil después de actualizar
+            return redirect('perfil')
 
     else:
         user_form = UserUpdateForm(instance=user)
@@ -93,6 +102,8 @@ def editar_perfil(request):
         'perfil_form': perfil_form
     })
 
-
 def mi_carrito(request):
+    """
+    Vista para mostrar el carrito de compras del usuario.
+    """
     return render(request, 'usuarios/carrito.html')

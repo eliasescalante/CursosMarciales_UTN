@@ -2,7 +2,9 @@ from django.db import models
 from django.conf import settings
 
 class Noticia(models.Model):
-
+    """
+    Modelo para Noticia
+    """
     titulo = models.CharField(max_length=255)
     contenido = models.TextField()
     fecha_publicacion = models.DateTimeField(auto_now_add=True)

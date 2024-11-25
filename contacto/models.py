@@ -6,6 +6,9 @@ from django.core.mail import send_mail
 
 
 class Consulta(models.Model):
+    """
+    Modelo para la tabla de consultas
+    """
 
     CONTESTADA = 'Contestada'
     NOCONTESTADA = 'No Contestada'
@@ -26,8 +29,10 @@ class Consulta(models.Model):
     def __str__(self):
         return "clase_: " + self.nombre
     
-
     def estado_de_respuesta(self):
+        """
+        Funcion para cambiar el estado de respuesta de la consulta
+        """
         if self.estado_respuesta == 'Contestada':
             return format_html('<span style="background-color:#0a0; color: #fff; padding:5px;">{}</span>', self.estado_respuesta, )
         elif self.estado_respuesta == 'No Contestada':
@@ -36,15 +41,17 @@ class Consulta(models.Model):
             return format_html('<span style="background-color:#F0B203; color: #000; padding:5px;"">{}</span>', self.estado_respuesta, )
 
 class Respuesta(models.Model):
-
+    """
+    Modelo para la tabla de respuestas
+    """
     consulta        = models.ForeignKey(Consulta, blank=False, null=True, on_delete=models.CASCADE)
     respuesta       = models.TextField()
     fecha           = models.DateField(default=datetime.now, blank=True, editable=False)
-    #history = HistoricalRecords()
-
 
     def create_mensaje(self):
-
+        """
+        Funcion para enviar un correo electronico con la respuesta de la consulta
+        """
         consula_cambio_estado = Consulta.objects.get(id=self.consulta.id)
         consula_cambio_estado.estado_respuesta = "Contestada"
         consula_cambio_estado.save()

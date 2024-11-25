@@ -6,10 +6,8 @@
 {% block content %}
     {% include 'descripcion_lateral.html' %}
 
-    <!-- Carrusel de cursos -->
     <div class="col-12">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <!-- Indicadores del carrusel -->
             <div class="carousel-indicators">
                 {% for curso in cursos %}
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
@@ -20,12 +18,11 @@
                 {% for curso in cursos %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
                         <img class="card-img-top pb-1 img_lat" src="{{ curso.imagen.url }}" alt="{{ curso.nombre }}" />
-                        <!-- Contenedor de texto, ahora con título arriba, descripción abajo y el botón -->
                         <div class="carousel-caption d-none d-md-block text-white p-4 position-absolute top-0 start-0 w-100 bg-opacity-50">
                             <h5 style="font-size: 2rem; font-weight: bold;">{{ curso.nombre }}</h5>
                         </div>
                         <div class="carousel-caption d-none d-md-block text-white p-4 position-absolute bottom-0 start-0 w-100 bg-opacity-50">
-                            <p style="font-size: 1.2rem;">{{ curso.Descripcion|truncatewords:100 }}</p> <!-- Descripción truncada -->
+                            <p style="font-size: 1.2rem;">{{ curso.Descripcion|truncatewords:100 }}</p>
                             <a href="{% url 'detalle_curso' curso.id %}" class="btn btn-primary">Conocer más</a>
                         </div>
                     </div>
@@ -44,11 +41,9 @@
         </div>
     </div>
 
-    <!-- Sección de Búsqueda y Ordenación -->
     <section id="search-section" class="mt-5">
         <h2>Buscar Cursos</h2>
 
-        <!-- Formulario para buscar cursos y ordenar -->
         <form method="GET" action="{% url 'home_cursos' %}">
             <div class="mb-3">
                 <input type="text" name="q" class="form-control" placeholder="Buscar cursos..." value="{{ query }}">
@@ -63,7 +58,6 @@
             <button type="submit" class="btn btn-primary">Buscar</button>
         </form>
 
-        <!-- Resultados de búsqueda -->
         <div id="course-results" class="mt-4">
             {% if cursos %}
                 <ul class="list-group">
@@ -117,6 +111,5 @@
 {% endblock %}
 
 {% block js_extra %}
-    <!-- Agregar Bootstrap JS al final de la página -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}
