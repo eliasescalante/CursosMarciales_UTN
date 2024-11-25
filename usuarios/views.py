@@ -7,15 +7,19 @@ from cursos.models import Curso
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages import get_messages
 
-# Vista para el inicio
+
 @login_required
 def home_usuarios(request):
+    """
+    Vista para el inicio de la aplicación.
+    """
     cursos = Curso.objects.all()
-    return render(request, 'cursos/home.html', {'cursos': cursos})  # Muestra la página de inicio solo para usuarios logueados
-    
-# Vista para el login de usuario
-def user_login(request):
+    return render(request, 'cursos/home.html', {'cursos': cursos})
 
+def user_login(request):
+    """
+    Vista para el login de usuario
+    """
     storage = get_messages(request)
     for _ in storage:  # Esto vacía los mensajes existentes
         pass
@@ -58,31 +62,37 @@ def user_register(request):
 
 @login_required
 def perfil(request):
-    # Obtener el usuario logueado
+    user = request.user
+    perfil = user.perfil
+    return render(request, 'usuarios/perfil.html', {
+        'user': user,
+        'perfil': perfil
+    })
+
+@login_required
+def editar_perfil(request):
     user = request.user
     perfil = user.perfil
 
     if request.method == 'POST':
-        # Crear los formularios con los datos recibidos del POST
         user_form = UserUpdateForm(request.POST, request.FILES, instance=user)
         perfil_form = PerfilUpdateForm(request.POST, instance=perfil)
 
         if user_form.is_valid() and perfil_form.is_valid():
-            # Guardar los formularios si son válidos
             user_form.save()
             perfil_form.save()
             messages.success(request, 'Tu perfil ha sido actualizado correctamente.')
-            return redirect('perfil')  # Redirigir a la misma página
+            return redirect('perfil')  # Redirigir al perfil después de actualizar
 
     else:
-        # Si es GET, llenar los formularios con los datos actuales
         user_form = UserUpdateForm(instance=user)
         perfil_form = PerfilUpdateForm(instance=perfil)
 
-    return render(request, 'usuarios/perfil.html', {
+    return render(request, 'usuarios/editar_perfil.html', {
         'user_form': user_form,
         'perfil_form': perfil_form
     })
+
 
 def mi_carrito(request):
     return render(request, 'usuarios/carrito.html')

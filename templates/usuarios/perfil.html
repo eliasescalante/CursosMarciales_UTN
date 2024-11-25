@@ -1,33 +1,33 @@
-<!-- usuarios/templates/usuarios/perfil.html -->
 {% extends 'layout.html' %}
 {% block title %}CURSOS MARCIALES - MI PERFIL{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h2>Actualizar Perfil</h2>
-
-        <!-- Mostrar mensajes de éxito o error -->
-        {% if messages %}
-        <div class="alert alert-success">
-            {% for message in messages %}
-            <p>{{ message }}</p>
-            {% endfor %}
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <h2>Mi Perfil</h2>
         </div>
-        {% endif %}
+        <div class="card-body">
+            <!-- Foto grande -->
+            <img src="{{ user.imagen.url }}" class="rounded mx-auto d-block mb-4" style="max-width: 200px; height: auto;" alt="Imagen de perfil">
 
-        <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-group">
-            <h4>Datos de Usuario</h4>
-            {{ user_form.as_p }}
+            <!-- Información -->
+            <h4 class="card-title">{{ user.first_name }} {{ user.last_name }}</h4>
+            <p class="card-text">
+                <strong>Username:</strong> {{ user.username }}<br>
+                <strong>Email:</strong> {{ user.email }}<br>
+                <strong>Fecha de nacimiento:</strong> {{ user.fecha_nacimiento }}<br>
+                <strong>Ciudad:</strong> {{ user.ciudad }}<br>
+                <strong>Domicilio:</strong> {{ user.domicilio }}<br>
+                <strong>Teléfono:</strong> {{ user.telefono }}<br>
+                <strong>Biografía:</strong> {{ perfil.bio }}
+            </p>
         </div>
-
-        <div class="form-group">
-            <h4>Datos de Perfil</h4>
-            {{ perfil_form.as_p }}
+        <div class="card-footer">
+            <!-- Botón para editar perfil -->
+            <a href="{% url 'editar_perfil' %}" class="btn btn-primary">Modificar Perfil</a>
         </div>
-
-        <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>
     </div>
+</div>
 {% endblock %}
+
