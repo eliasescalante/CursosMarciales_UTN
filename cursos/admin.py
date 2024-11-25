@@ -23,6 +23,12 @@ class TicketAdmin(admin.ModelAdmin):
     list_filter = ['estado']
     search_fields = ['usuario__username', 'curso__nombre']
 
+    def has_add_permission(self, request):
+        """
+        Para evitar que se agreguen perfiles desde el admin.
+        """
+        return False
+
 
 admin.site.register(Curso, CursoAdmin)
 admin.site.register(Ticket, TicketAdmin)
