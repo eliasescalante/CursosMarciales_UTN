@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+<h1>Cursos Seleccionados</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Comisión</th>
+            <th>Profesor</th>
+            <th>Precio</th>
+            <th>Cupo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+        <tr>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.comision }}</td>
+            <td>{{ curso.Profesor }}</td>
+            <td>{{ curso.precio }}</td>
+            <td>{{ curso.cupo }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
