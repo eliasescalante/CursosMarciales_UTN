@@ -6,6 +6,8 @@
 {% block content %}
     {% include 'descripcion_lateral.html' %}
 
+    <link rel="stylesheet" href="{% static 'cursos/home/css/style.css' %}">
+
     <div class="col-12">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -74,40 +76,6 @@
         </div>
     </section>
 
-    <style>
-        body {
-            background-color: white;
-        }
-
-        .carousel-caption {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #DAFF00;
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        .carousel-item img {
-            width: 100%;
-            height: 700px;
-            object-fit: contain;
-        }
-
-        #search-section {
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-
-        #search-section h2 {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        #course-results .list-group-item {
-            font-size: 1.2rem;
-        }
-    </style>
 {% endblock %}
 
 {% block js_extra %}

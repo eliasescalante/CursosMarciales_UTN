@@ -6,7 +6,7 @@ from django.http import JsonResponse
 
 def home_cursos(request):
     """
-    View para a página inicial do sistema.
+    View para a página inicial
     """
     cursos = Curso.objects.all()
 
@@ -32,7 +32,6 @@ def noticias(request):
 # def mis_cursos(request):
 #    return render(request, 'cursos/mis_cursos.html')
 
-
 @login_required
 def inscribirse_curso(request, curso_id):
     """
@@ -41,20 +40,27 @@ def inscribirse_curso(request, curso_id):
     curso = get_object_or_404(Curso, id=curso_id)
     usuario = request.user
 
+    # Verifica si el usuario ya está inscrito en el curso
     if Ticket.objects.filter(usuario=usuario, curso=curso).exists():
         messages.warning(request, f'Ya estás inscrito en el curso "{curso.nombre}".')
         return redirect('detalle_curso', curso_id=curso.id)
 
+    # Verifica si el curso tiene cupos disponibles
     if curso.cupo <= 0:
         messages.error(request, f'El curso "{curso.nombre}" no tiene cupos disponibles.')
         return redirect('detalle_curso', curso_id=curso.id)
 
-    ticket= Ticket.objects.create(usuario=usuario, curso=curso, estado='pendiente')
+    # Crea el ticket y actualiza el cupo del curso
+    ticket = Ticket.objects.create(usuario=usuario, curso=curso, estado='pendiente')
     curso.cupo -= 1
     curso.save()
-    messages.success(request, f'Te has inscrito en el curso "{curso.nombre}" con éxito.  Tu ticket ID es: {ticket.id}')
+
+    # Mensaje de éxito
+    messages.success(request, f'Te has inscrito en el curso "{curso.nombre}" con éxito. Tu ticket ID es: {ticket.id}')
     
-    return redirect('mis_cursos')
+    # Redirige a la vista de detalles del ticket
+    return redirect('ticket', ticket_id=ticket.id)
+
 
 @login_required
 def mis_cursos(request):
@@ -94,3 +100,10 @@ def desuscribirse_curso(request, ticket_id):
     except Ticket.DoesNotExist:
         return JsonResponse({'success': False, 'message': "No se pudo completar la desuscripción. El ticket no existe o no tienes permiso."})
 
+@login_required
+def ticket_detalle(request, ticket_id):
+    """
+    Vista para mostrar los detalles de un ticket.
+    """
+    ticket = get_object_or_404(Ticket, id=ticket_id, usuario=request.user)
+    return render(request, 'cursos/ticket.html', {'ticket': ticket})
