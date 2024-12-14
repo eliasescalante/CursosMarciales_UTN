@@ -5,7 +5,7 @@ html, body {
 }
 
 .nav-item.dropdown .dropdown-menu {
-    z-index: 1050; /* Asegura que el dropdown se muestre por encima de otros elementos */
+    z-index: 1050;
 }
 
 .main-container {
@@ -15,7 +15,8 @@ html, body {
 }
 
 .navbar {
-    flex-shrink: 0;  /* Previene que la barra de navegación se reduzca */
+    position: fixed;
+    flex-shrink: 0;
 }
 
 .content {
@@ -23,10 +24,10 @@ html, body {
 }
 /* Estilos para el footer */
 footer {
-    background-color: #333;  /* Gris oscuro */
-    color: #fff;  /* Texto blanco */
+    background-color: #333;
+    color: #fff;
     text-align: center;
-    padding: 20px 0;  /* Ajuste del padding */
+    padding: 20px 0;
     position: relative;
     bottom: 0;
     width: 100%;

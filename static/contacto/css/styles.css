@@ -15,16 +15,6 @@ h1 {
     text-align: center;
 }
 
-/* Estilo del Navbar */
-.navbar {
-    background-color: #343a40 !important; /* Fondo oscuro */
-}
-
-.navbar-nav {
-    display: flex;
-    justify-content: flex-end; /* Enlaces a la derecha */
-}
-
 /* Estilo específico para la página de contacto */
 .contact-page .navbar {
     background-color: #000 !important; /* Fondo negro */

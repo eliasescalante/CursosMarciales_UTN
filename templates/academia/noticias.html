@@ -10,10 +10,10 @@
         <h2>Últimas Noticias</h2>
         <div class="row">
             {% for noticia in noticias %}
-                <div class="col-md-4">
+                <div class="col-md-4 animate-on-scroll">
                     <div class="card mb-4">
                         {% if noticia.imagen %}
-                        <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" class="img-fluid mb-3">
+                            <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" class="img-fluid mb-3">
                         {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ noticia.titulo }}</h5>
@@ -24,8 +24,12 @@
                             Publicado el {{ noticia.fecha_publicacion|date:"d/m/Y" }}
                         </div>
                     </div>
-                </div>
+                </div>            
             {% endfor %}
         </div>
     </div>
+    <!--Aca agrego GASP-->
+    <script src="{% static 'academia/noticias/js/animaciones.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.1/dist/gsap.min.js"></script>
+
 {% endblock %}

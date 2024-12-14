@@ -1,27 +1,31 @@
-/* Contenedor padre para las filas */
 .row {
     display: flex;
-    flex-wrap: wrap; /* Permite que las tarjetas se ajusten a diferentes líneas si es necesario */
+    flex-wrap: wrap;
 }
 
-/* Cada columna debe tener altura completa */
 .col-md-4 {
     display: flex;
-    flex-direction: column; /* Organiza contenido verticalmente */
+    flex-direction: column;
 }
 
-/* Tarjetas con la misma altura */
+/* Para las cards */
 .card {
-    flex-grow: 1; /* Hace que todas las tarjetas crezcan a la misma altura */
+    flex-grow: 1;
     display: flex;
-    flex-direction: column; /* Asegura que los hijos dentro de la tarjeta se alineen verticalmente */
+    flex-direction: column;
 }
 
-/* Asegura que el cuerpo y el pie de la tarjeta estén correctamente posicionados */
 .card-body {
-    flex-grow: 1; /* Ocupa todo el espacio disponible */
+    flex-grow: 1;
 }
 
 .card-footer {
-    margin-top: auto; /* Empuja el footer al final de la tarjeta */
+    margin-top: auto;
 }
+
+/*para gasp*/
+.animate-on-scroll {
+    opacity: 0; 
+    transform: translateY(100px);
+}
+
