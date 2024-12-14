@@ -1,54 +1,48 @@
 /* Fondo general de la página */
 body {
-    background-color: #f4f4f4; /* Fondo gris claro */
-    color: black;
+    background-color: #121212;
+    color: white;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-}
-
-/* Título principal en la página */
-h1 {
-    font-family: 'Anton', sans-serif;
-    color: #BADA55;
-    font-size: 4rem;
-    text-align: center;
-}
-
-/* Estilo específico para la página de contacto */
-.contact-page .navbar {
-    background-color: #000 !important; /* Fondo negro */
-}
-
-/* Contenedor principal centrado */
-.contact-page .container-fluid {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 15px;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Tarjeta de formulario con fondo oscuro y sombra */
-.contact-page .contacto_form {
-    background-color: #292C3E; /* Fondo oscuro */
-    padding: 30px 40px 30px 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    color: white;
-    width: 100%;
-    position: relative; /* Se debe agregar para usar position: absolute en el botón */
+/* Estilo específico para la página de contacto */
+.contact-page .navbar {
+    background-color: #000 !important;
 }
 
-/* Título del formulario centrado y en verde amarillento */
+/* Contenedor principal centrado */
+.contact-page .container-fluid {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-page .contacto_form {
+    background-color: #2c2f3f;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Título del formulario*/
 .contact-page .h1juan {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
-    color: #DAFF00; /* Verde amarillo */
+    color: #DAFF00;
     font-family: 'Anton', sans-serif;
     margin-bottom: 20px;
-    text-align: center;
 }
 
 /* Estilo de las etiquetas del formulario */
@@ -56,45 +50,51 @@ h1 {
     font-size: 1.1rem;
     color: #DAFF00;
     font-family: 'Anton', sans-serif;
-    display: block; /* Esto asegura que las etiquetas se alineen verticalmente sobre los campos */
-    margin-bottom: 5px; /* Espacio entre la etiqueta y el campo de entrada */
+    display: block;
+    margin-bottom: 5px;
 }
 
-/* Estilo de los campos de entrada y textarea */
 .contact-page .form-group input,
 .contact-page .form-group textarea,
 .contact-page .form-group select {
     width: 100%;
     padding: 12px;
     margin: 10px 0 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #444;
     border-radius: 4px;
     font-size: 1rem;
     color: #333;
-    background-color: #f9f9f9;
+    background-color: #fff;
     box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
 
-/* Posiciona el botón en la esquina superior derecha de la tarjeta */
+.contact-page .form-group input:focus,
+.contact-page .form-group textarea:focus,
+.contact-page .form-group select:focus {
+    border-color: #DAFF00;
+    outline: none;
+}
+
 .contact-page .btn {
     background-color: #DAFF00;
     color: black;
     border: none;
     border-radius: 25px;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     padding: 12px 25px;
-    position: absolute; /* Se usa para posicionar el botón dentro de la tarjeta */
-    top: 20px; /* Ajusta la distancia desde el borde superior */
-    right: 20px; /* Ajusta la distancia desde el borde derecho */
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
-/* Efecto hover en el botón */
 .contact-page .btn:hover {
-    background-color: #BADA55; /* Efecto hover más oscuro */
+    background-color: #BADA55;
+    transform: scale(1.05);
+    text-decoration: none;
 }
 
-/* Ajustes responsivos */
+/* Configuracion para que sea responsive */
 @media (max-width: 768px) {
     .contact-page .container-fluid {
         padding: 15px;
@@ -102,14 +102,16 @@ h1 {
 
     .contact-page .contacto_form {
         padding: 20px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .contact-page .h1juan {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .contact-page .btn {
-        font-size: 1.1rem;
-        padding: 12px 20px;
+        font-size: 1rem;
+        padding: 10px 20px;
     }
 }

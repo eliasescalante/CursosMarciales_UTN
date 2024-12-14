@@ -112,6 +112,29 @@ p {
     color: #000;
 }
 
+/* Estilo para el botón de consultas */
+.consultas-btn {
+    position: absolute;
+    top: 10px;
+    right: 30px; 
+}
+
+.btn-consultas {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-consultas:hover {
+    background-color: #DAFF00;
+    color: #000;
+}
+
 
 /*ESTILO PARA LA SECCION INFO [seccion intermedia]*/
 .info {
