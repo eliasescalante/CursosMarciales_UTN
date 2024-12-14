@@ -6,13 +6,14 @@ Este es un proyecto desarrollado como parte del trabajo de nivel intermedio de l
 
 ## Funcionalidades
 
-- **Registro de Usuarios**: Los usuarios pueden registrarse en la plataforma, creando una cuenta con información personal.
-- **Registro de Usuarios**: Los usuarios pueden ademas modificar su informacion personal ademas de agregar imagenes de avatar.
+- **Registro de Usuarios**: Los usuarios pueden registrarse en la plataforma, creando una cuenta con información personal. (al crear un usuario se les asocia un perfil de usuario)
+- **Login**: Los usuarios pueden logearse con su cuenta, ver su perfil, agregar o eliminar o cambiar su imagen de avatar ademas de modificar toda su informacion del perfil.
 - **Autenticación**: Sistema de inicio de sesión para acceder a la plataforma.
-- **Administración de Cursos**: Los administradores pueden crear, modificar y eliminar cursos y  noticias a través de la interfaz de administración de Django.
+- **Administración de Cursos**: Los administradores pueden crear, modificar y eliminar cursos a través de la interfaz de administración de Django.
 - **Visualización de Cursos**: Los usuarios pueden explorar diferentes cursos marciales disponibles, con detalles como nombre, descripción, profesor, precio, entre otros.
-- **Inscripción en Cursos**: Los usuarios pueden inscribirse en los cursos de su interés y gestionar su inscripción.
-- **Gestión de Imágenes**: Cada curso puede tener una imagen asociada para mejorar la presentación visual.
+- **Inscripción en Cursos**: Los usuarios pueden inscribirse en los cursos de su interés y gestionar su inscripción, obteniendo un ticket de compra al suscribirse.
+- **Mis Cursos**: Al inscribirse al curso, el mismo reduce el cupo y se registra en los cursos del usuario logeado y este no puede volver a inscribirse en el mismo curso a menos que se desuscriban al mismo.
+- **Noticias**: Los administradores pueden publicar noticias y los usuarios pueden visualizarlas. Los Administradores pueden hacerlo desde la vista de Admin de Django.
 
 ## Tecnologías Utilizadas
 
@@ -22,6 +23,8 @@ Este es un proyecto desarrollado como parte del trabajo de nivel intermedio de l
 - **HTML/CSS**: Para la creación de la interfaz de usuario.
 - **Bootstrap**: Framework CSS utilizado para el diseño responsivo.
 - **Admin de Django**: Interfaz de administración incorporada para gestionar usuarios y cursos.
+- **Green Sock**: Se utilizo la libreria GASP para agregar animaciones al scrollear la seccion de noticias.
+- **JavaScript**: Se utilizo AJAX para no bloquear el flujo de la pagina.   
 
 CAPTURAS DEL PROYECTO:
 
