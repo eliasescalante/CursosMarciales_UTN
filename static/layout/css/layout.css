@@ -15,8 +15,10 @@ html, body {
 }
 
 .navbar {
-    position: fixed;
-    flex-shrink: 0;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1040;
 }
 
 .content {
