@@ -47,7 +47,8 @@
         <h2>Buscar Cursos</h2>
         <form method="GET" action="{% url 'home_cursos' %}">
             <div class="mb-3">
-                <input type="text" name="q" class="form-control" placeholder="Buscar cursos..." value="{{ query }}">
+                <input id="search-input" type="text" name="q" class="form-control" placeholder="Buscar cursos..." value="{{ query }}">
+                <ul id="search-results" class="list-group" style="display:none;"></ul>
             </div>
             <div class="mb-3">
                 <select name="order" class="form-select">

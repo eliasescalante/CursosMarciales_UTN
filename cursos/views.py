@@ -107,4 +107,3 @@ def ticket_detalle(request, ticket_id):
     """
     ticket = get_object_or_404(Ticket, id=ticket_id, usuario=request.user)
     return render(request, 'cursos/ticket.html', {'ticket': ticket})
-
