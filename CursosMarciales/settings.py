@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-qjw4#_lym*2=db9bl$+37#udg6%5z0rtnbb(lk4ro0d!*ppalm"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
