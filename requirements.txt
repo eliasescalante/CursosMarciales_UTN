@@ -109,7 +109,6 @@ PyMuPDFb==1.23.6
 PyMySQL==1.1.0
 PyPDF2==3.0.1
 pyperclip==1.8.2
-pypiwin32==223
 pyproject_hooks==1.0.0
 PyQt5==5.15.9
 pyqt5-plugins==5.15.9.2.3
