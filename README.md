@@ -24,9 +24,11 @@ Este es un proyecto desarrollado como parte del trabajo de nivel intermedio de l
 - **Bootstrap**: Framework CSS utilizado para el diseño responsivo.
 - **Admin de Django**: Interfaz de administración incorporada para gestionar usuarios y cursos.
 - **Green Sock**: Se utilizo la libreria GASP para agregar animaciones al scrollear la seccion de noticias.
-- **JavaScript**: Se utilizo AJAX para no bloquear el flujo de la pagina.   
+- **JavaScript**: Se utilizo AJAX para no bloquear el flujo de la pagina.
+- **Rest_framework** Para generar una Rest-Api. 
 
 CAPTURAS DEL PROYECTO:
 
 <img src="https://github.com/eliasescalante/CursosMarciales_UTN/blob/master/media/captura.png" width="600" />
 <img src="https://github.com/eliasescalante/CursosMarciales_UTN/blob/master/media/captura2.png" width="600"/>
+<img src="" wdth="600" />

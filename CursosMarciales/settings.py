@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-qjw4#_lym*2=db9bl$+37#udg6%5z0rtnbb(lk4ro0d!*ppalm"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -46,8 +46,10 @@ INSTALLED_APPS = [
     "cursos.apps.CursosConfig",
     "contacto.apps.ContactoConfig",
     "academia.apps.AcademiaConfig",
+    "cursosrestapi.apps.CursosrestapiConfig",
+    "rest_framework",
     # App de terceros
-    "captcha"
+    "captcha",
 ]
 
 MIDDLEWARE = [

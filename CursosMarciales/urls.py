@@ -26,6 +26,7 @@ urlpatterns = [
     path("cursos/", include('cursos.urls')),
     path("usuarios/", include('usuarios.urls')),
     path("contacto/", include('contacto.urls')),
+    path("api/v1.0/", include('cursosrestapi.urls')),
     path("captcha/", include('captcha.urls')),
     path("", include('academia.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
