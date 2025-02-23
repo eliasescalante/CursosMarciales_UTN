@@ -13,12 +13,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from django.contrib.messages import constants as messages
 import os
-
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.python
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-MERCADOPAGO_PUBLIC_KEY = "APP_USR-51c52d9c-7237-4617-a98c-b27a686bb0db"
-MERCADOPAGO_ACCESS_TOKEN = "APP_USR-3600176249309263-022317-1472c20ff7dd1a3caa41d01eeb78b3c6-249887091"
+load_dotenv()
+
+MP_ACCESS_TOKEN = os.getenv('MP_ACCESS_TOKEN')
+MP_PUBLIC_KEY = os.getenv('MP_PUBLIC_KEY')
 
 
 # Quick-start development settings - unsuitable for production
