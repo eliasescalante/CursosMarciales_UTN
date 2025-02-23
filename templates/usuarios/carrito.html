@@ -1,10 +1,52 @@
 {% extends 'layout.html' %}
-{% block title %}CURSOS MARCIALES - MI Carrito{% endblock %}
-
 {% block content %}
-<div class="container-center">
-    <h1>EN CONSTRUCCIÓN</h1>
-</div>
+<h2>Carrito de Compras</h2>
+<table>
+    <tr>
+        <th>Curso</th>
+        <th>Fecha</th>
+        <th>Acción</th>
+    </tr>
+    {% for ticket in tickets_pendientes %}
+    <tr>
+        <td>{{ ticket.curso.nombre }}</td>
+        <td>{{ ticket.fecha_compra }}</td>
+        <td>
+            <a href="{% url 'ticket' ticket.id %}" class="btn btn-primary">Completar Pago</a>
+            <button class="btn btn-danger eliminar-ticket" data-ticket-id="{{ ticket.id }}">Eliminar Ticket</button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".eliminar-ticket").forEach(button => {
+        button.addEventListener("click", function() {
+            const ticketId = this.getAttribute("data-ticket-id");
+            fetch(`/usuarios/carrito/eliminar-ticket/${ticketId}/`, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    location.reload();
+                } else {
+                    alert("Error: " + data.message);
+                }
+            });
+        });
+    });
+});
+</script>
+
+{% endblock %}
+
+
 
 <style>
     .container-center {
@@ -26,4 +68,3 @@
         margin: 0;
     }
 </style>
-{% endblock %}

@@ -6,6 +6,8 @@ from .models import User
 from cursos.models import Curso
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages import get_messages
+from cursos.models import Ticket
+from django.http import JsonResponse
 
 
 @login_required
@@ -102,8 +104,20 @@ def editar_perfil(request):
         'perfil_form': perfil_form
     })
 
+@login_required
 def mi_carrito(request):
     """
     Vista para mostrar el carrito de compras del usuario.
     """
-    return render(request, 'usuarios/carrito.html')
+    #return render(request, 'usuarios/carrito.html')
+    tickets_pendientes = Ticket.objects.filter(usuario=request.user, estado='pendiente')
+    return render(request, 'usuarios/carrito.html', {'tickets_pendientes': tickets_pendientes})
+
+@login_required
+def eliminar_ticket_carrito(request, ticket_id):
+    try:
+        ticket = Ticket.objects.get(id=ticket_id, usuario=request.user)
+        ticket.delete()
+        return JsonResponse({'success': True, 'message': f"El ticket del curso {ticket.curso.nombre} ha sido eliminado."})
+    except Ticket.DoesNotExist:
+        return JsonResponse({'success': False, 'message': "El ticket no existe o no tienes permiso."})

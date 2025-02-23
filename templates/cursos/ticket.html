@@ -1,14 +1,13 @@
 {% extends 'layout.html' %}
-
 {% block content %}
-  <div class="ticket-details">
-    <h1>Detalles del Ticket</h1>
-    <p><strong>ID del Ticket:</strong> {{ ticket.id }}</p>
-    <p><strong>Curso:</strong> {{ ticket.curso.nombre }}</p>
-    <p><strong>Profesor:</strong> {{ ticket.curso.Profesor }}</p>
-    <p><strong>Estado del Ticket:</strong> {{ ticket.estado }}</p>
-    <p><strong>Fecha de Inscripción:</strong> {{ ticket.fecha_inscripcion }}</p>
+<h2>Detalle del Ticket</h2>
+<p>Curso: {{ ticket.curso.nombre }}</p>
+<p>Fecha de Compra: {{ ticket.fecha_compra }}</p>
+<p>Estado: {{ ticket.estado }}</p>
 
-    <a href="{% url 'mis_cursos' %}" class="btn btn-primary">Volver a Mis Cursos</a>
-  </div>
+{% if ticket.estado == 'pendiente' %}
+    <a href="{{ payment_url }}" class="btn btn-success">Completar Pago</a>
+{% endif %}
+
+<a href="{% url 'carrito' %}" class="btn btn-secondary">Volver al Carrito</a>
 {% endblock %}

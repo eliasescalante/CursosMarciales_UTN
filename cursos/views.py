@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.conf import settings
+import mercadopago
 
 def home_cursos(request):
     """
@@ -100,10 +102,52 @@ def desuscribirse_curso(request, ticket_id):
     except Ticket.DoesNotExist:
         return JsonResponse({'success': False, 'message': "No se pudo completar la desuscripción. El ticket no existe o no tienes permiso."})
 
-@login_required
-def ticket_detalle(request, ticket_id):
+#@login_required
+#def ticket_detalle(request, ticket_id):
     """
     Vista para mostrar los detalles de un ticket.
     """
+#    ticket = get_object_or_404(Ticket, id=ticket_id, usuario=request.user)
+#    return render(request, 'cursos/ticket.html', {'ticket': ticket})
+
+@login_required
+def ticket_detalle(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id, usuario=request.user)
-    return render(request, 'cursos/ticket.html', {'ticket': ticket})
+
+    # Configurar SDK de Mercado Pago
+    sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)
+
+    # Crear preferencia de pago
+    preference_data = {
+        "items": [
+            {
+                "title": ticket.curso.nombre,
+                "quantity": 1,
+                "currency_id": "ARS",
+                "unit_price": float(ticket.curso.precio)  # Asegurarnos de que sea float
+            }
+        ],
+        "payer": {
+            "email": request.user.email
+        },
+        "back_urls": {
+            "success": request.build_absolute_uri('/usuarios/carrito/'),
+            "failure": request.build_absolute_uri('/usuarios/carrito/'),
+            "pending": request.build_absolute_uri('/usuarios/carrito/')
+        },
+        "auto_return": "approved"
+    }
+
+    preference_response = sdk.preference().create(preference_data)
+
+    # **DEBUG: Imprimir respuesta completa**
+    print("Respuesta de Mercado Pago:", preference_response)
+
+    if "response" in preference_response and "id" in preference_response["response"]:
+        payment_url = preference_response["response"].get("init_point")
+    else:
+        # Si Mercado Pago no devuelve un 'id', mostramos un error en la consola
+        print("Error al crear la preferencia de Mercado Pago:", preference_response)
+        preference_id = None
+
+    return render(request, 'cursos/ticket.html', {'ticket': ticket, 'payment_url': payment_url})
