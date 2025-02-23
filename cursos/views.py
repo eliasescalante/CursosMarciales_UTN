@@ -30,9 +30,6 @@ def noticias(request):
     """
     return render(request, 'cursos/noticias.html')
 
-# Vista para la página de mis cursos
-# def mis_cursos(request):
-#    return render(request, 'cursos/mis_cursos.html')
 
 @login_required
 def inscribirse_curso(request, curso_id):
@@ -102,20 +99,12 @@ def desuscribirse_curso(request, ticket_id):
     except Ticket.DoesNotExist:
         return JsonResponse({'success': False, 'message': "No se pudo completar la desuscripción. El ticket no existe o no tienes permiso."})
 
-#@login_required
-#def ticket_detalle(request, ticket_id):
-    """
-    Vista para mostrar los detalles de un ticket.
-    """
-#    ticket = get_object_or_404(Ticket, id=ticket_id, usuario=request.user)
-#    return render(request, 'cursos/ticket.html', {'ticket': ticket})
-
 @login_required
 def ticket_detalle(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id, usuario=request.user)
 
     # Configurar SDK de Mercado Pago
-    sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)
+    sdk = mercadopago.SDK(settings.MP_ACCESS_TOKEN)
 
     # Crear preferencia de pago
     preference_data = {
@@ -124,7 +113,7 @@ def ticket_detalle(request, ticket_id):
                 "title": ticket.curso.nombre,
                 "quantity": 1,
                 "currency_id": "ARS",
-                "unit_price": float(ticket.curso.precio)  # Asegurarnos de que sea float
+                "unit_price": float(ticket.curso.precio)
             }
         ],
         "payer": {
@@ -140,9 +129,6 @@ def ticket_detalle(request, ticket_id):
 
     preference_response = sdk.preference().create(preference_data)
 
-    # **DEBUG: Imprimir respuesta completa**
-    print("Respuesta de Mercado Pago:", preference_response)
-
     if "response" in preference_response and "id" in preference_response["response"]:
         payment_url = preference_response["response"].get("init_point")
     else:
@@ -151,3 +137,22 @@ def ticket_detalle(request, ticket_id):
         preference_id = None
 
     return render(request, 'cursos/ticket.html', {'ticket': ticket, 'payment_url': payment_url})
+
+
+def confirmar_pago(request, curso_id):
+    curso = Curso.objects.get(id=curso_id)
+    # Si el pago es correcto, actualizamos el curso y el carrito
+    usuario = request.user
+    if Carrito.objects.filter(usuario=usuario, curso=curso).exists():
+        carrito = Carrito.objects.get(usuario=usuario, curso=curso)
+        carrito.delete()  # Borra el curso del carrito
+
+        # Cambia el estado del curso a "pagado"
+        usuario_curso = UsuarioCurso.objects.get(usuario=usuario, curso=curso)
+        usuario_curso.estado = "pagado"
+        usuario_curso.save()
+
+        # Agregar un mensaje de éxito
+        messages.success(request, f"Gracias por tu compra. El curso '{curso.nombre}' ha sido aprobado.")
+
+    return redirect('mis_cursos')

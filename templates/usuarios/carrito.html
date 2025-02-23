@@ -12,7 +12,7 @@
         <td>{{ ticket.curso.nombre }}</td>
         <td>{{ ticket.fecha_compra }}</td>
         <td>
-            <a href="{% url 'ticket' ticket.id %}" class="btn btn-primary">Completar Pago</a>
+            <a href="{% url 'ticket' ticket.id %}" class="btn btn-primary">Ver pago del cursos</a>
             <button class="btn btn-danger eliminar-ticket" data-ticket-id="{{ ticket.id }}">Eliminar Ticket</button>
         </td>
     </tr>
