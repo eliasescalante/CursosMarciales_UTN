@@ -27,6 +27,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 INSTALLED_APPS = [
     # App por defecto
+    "django.contrib.sites",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -41,9 +42,11 @@ INSTALLED_APPS = [
     "cursosrestapi.apps.CursosrestapiConfig",
     "rest_framework",
     "sslserver", #python manage.py runsslserver 127.0.0.1:8888
+    "django.contrib.sitemaps",
     # App de terceros
     "captcha",
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -75,10 +78,6 @@ TEMPLATES = [
 
 
 AUTH_USER_MODEL = 'usuarios.User'
-
-
-
-
 WSGI_APPLICATION = "CursosMarciales.wsgi.application"
 
 
