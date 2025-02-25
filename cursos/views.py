@@ -104,7 +104,7 @@ def ticket_detalle(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id, usuario=request.user)
 
     # Configurar SDK de Mercado Pago
-    sdk = mercadopago.SDK(settings.MP_ACCESS_TOKEN)
+    sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)
 
     # Crear preferencia de pago
     preference_data = {

@@ -4,11 +4,11 @@ import os
 from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.python
 BASE_DIR = Path(__file__).resolve().parent.parent
+dotenv_path = os.path.join(BASE_DIR, ".env")
+load_dotenv(dotenv_path)
 
-load_dotenv()
-
-MP_ACCESS_TOKEN = os.getenv('MERCADOPAGO_ACCESS_TOKEN')
-MP_PUBLIC_KEY = os.getenv('MERCADOPAGO_PUBLIC_KEY')
+MERCADOPAGO_ACCESS_TOKEN = os.getenv('MERCADOPAGO_ACCESS_TOKEN' or "")
+MERCADOPAGO_PUBLIC_KEY = os.getenv('MERCADOPAGO_PUBLIC_KEY' or "")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -19,7 +19,7 @@ SECRET_KEY = "django-insecure-qjw4#_lym*2=db9bl$+37#udg6%5z0rtnbb(lk4ro0d!*ppalm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "127.0.0.1", "localhost"]
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # App de terceros
     "captcha",
 ]
+
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -90,6 +91,18 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # Cambiar a 'mysql'
+        'NAME': 'utn1',  # Nombre de tu base de datos MariaDB
+        'USER': 'root',  # Usuario que tiene acceso a la base de datos
+        'PASSWORD': 'elias',  # La contraseña que configuraste para root
+        'HOST': 'localhost',  # El host donde está corriendo MariaDB
+        'PORT': '3306',  # Puerto por defecto de MariaDB
+    }
+}"""
 
 
 # Password validation
@@ -144,4 +157,3 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = '/usuarios/login/'
-

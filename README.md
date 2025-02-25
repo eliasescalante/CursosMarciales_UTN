@@ -26,6 +26,8 @@ Este es un proyecto desarrollado como parte del trabajo de nivel intermedio de l
 - **Green Sock**: Se utilizo la libreria GASP para agregar animaciones al scrollear la seccion de noticias.
 - **JavaScript**: Se utilizo AJAX para no bloquear el flujo de la pagina.
 - **Rest_framework** Para generar una Rest-Api. 
+- **SITEMAP** sitemap.xml
+- **SERVICIO DE PAGOS** mercado pago.
 
 CAPTURAS DEL PROYECTO:
 
